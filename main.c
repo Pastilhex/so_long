@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:15:36 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/14 13:09:29 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/03/14 22:02:04 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,9 @@ int	main(void)
 	root.i = 0;
 	root.j = 0;
 	start_img(&root);
-	//mlx_loop_hook(root.mlx, &handle_no_event, &root);
-	
+	mlx_loop_hook(root.mlx, &handle_no_event, &root);
 	mlx_hook(root.mlx_win, 2, 1L << 0, &handle_keypress, &root);
-	//mlx_hook(root.mlx_win, 17, 0, close_window, &root);
+	mlx_hook(root.mlx_win, 17, 0, close_window, &root);
 	
 	mlx_loop(root.mlx);
 }

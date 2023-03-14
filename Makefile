@@ -7,7 +7,6 @@ SRC		= main.c \
 		events.c \
 		map_gen.c\
 		setup.c \
-		map.c \
 		map_check.c
 OBJS	= $(SRC:.c=.o)
 CFLAGS	= -L./minilibx-linux -Wall -Werror -Wextra -O0 -g -lmlx -lXext -lX11 -lm -lbsd

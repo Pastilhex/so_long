@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 22:09:52 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/03/13 23:37:37 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/03/14 22:02:00 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ typedef struct s_tile
 	char	*wall_bottom_right;
 	char	*collectable;
 	char	*exit;
+	char	*exit_over_l;
+	char	*exit_over_r;
 	char	*player_r;
 	char	*player_l;
 	char	*player_exit_r;
@@ -53,6 +55,7 @@ typedef struct s_tile
 	char	p_i;
 	char	m_j;
 	char	p_j;
+	int		exit_flag;
 }	t_tile;
 
 typedef struct s_root
@@ -84,24 +87,32 @@ typedef struct s_root
 	t_tile	tile;
 }	t_root;
 
-void	collect_count(t_root *root);
-char	*gen_walls(t_root *root);
+//events
 int		close_window(t_root *root);
-int		ft_putchar(char c);
-int		ft_putnbr(int n);
-void	collect_count(t_root *root);
-void	gen_img(int x, int y, t_root *root);
-void	settings(t_root *root);
-void	start_img(t_root *root);
-int		handle_no_event(void *t_root);
 int		mouse_event(int keycode, t_root *root);
 int		handle_keypress(int keysym, t_root *root);
+int		handle_no_event(void *t_root);
+
+//map_check
+void	collect_count(t_root *root);
+
+//map_gen
 void	map_count_lines(t_root *root);
 void	map_count_rows(t_root *root);
 void	build_array(t_root *root);
-void	move_player(int x, int y, t_root *root);
-void	update_image(t_root *root, int i, int j);
-void	move_player(int x, int y, t_root *root);
+void	search_player(t_root *root);
+char	*gen_walls(t_root *root);
 char	*get_next_line(int fd);
+
+//move_player
+void	gen_img(int x, int y, t_root *root);
+void	move_player(int x, int y, t_root *root);
+
+//setup
+int		ft_putchar(char c);
+int		ft_putnbr(int n);
+void	ft_putstr(char *s);
+void	settings(t_root *root);
+void	start_img(t_root *root);
 
 #endif

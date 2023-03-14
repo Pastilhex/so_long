@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_gen.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:25:46 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/14 14:52:50 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/03/14 21:46:08 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,31 +92,25 @@ void	search_player(t_root *root)
 	}
 }
 
-void	start_img(t_root *root)
+char	*gen_walls(t_root *root)
 {
-	while (root->map_array[root->i][root->j] != '\0')
-	{
-		while (root->map_array[root->i][root->j] != '\n'
-			&& root->map_array[root->i][root->j] != '\0')
-		{
-			if (root->map_array[root->i][root->j] == root->tile.a_empty)
-				root->texture_path = root->tile.empty;
-			else if (root->map_array[root->i][root->j] == root->tile.a_wall)
-				root->texture_path = gen_walls(root);
-			else if (root->map_array[root->i][root->j]
-				== root->tile.a_collectable)
-				root->texture_path = root->tile.collectable;
-			else if (root->map_array[root->i][root->j] == root->tile.a_exit)
-				root->texture_path = root->tile.exit;
-			else if (root->map_array[root->i][root->j] == root->tile.a_player)
-				root->texture_path = root->tile.player_r;
-			gen_img(root->j, root->i, root);
-			root->j++;
-		}
-		root->j = 0;
-		root->i++;
-	}
-	search_player(root);
-	collect_count(root);
-	root->tile.last_move = root->tile.player_r;
+	if (root->i == 0 && root->j == 0)
+		return (root->tile.wall_top_left);
+	else if (root->i == 0 && root->j > 0 && root->j < root->rows - 1)
+		return (root->tile.wall_top);
+	else if (root->i == 0 && root->j == root->rows - 1)
+		return (root->tile.wall_top_right);
+	else if (root->i == root->lines - 1 && root->j == 0)
+		return (root->tile.wall_bottom_left);
+	else if (root->i == root->lines - 1
+		&& root->j > 0 && root->j < root->rows - 1)
+		return (root->tile.wall_bottom);
+	else if (root->i == root->lines - 1 && root->j == root->rows - 1)
+		return (root->tile.wall_bottom_right);
+	else if (root->j == 0)
+		return (root->tile.wall_left);
+	else if (root->j == root->rows - 1)
+		return (root->tile.wall_right);
+	else
+		return (root->tile.wall);
 }
