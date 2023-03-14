@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "mlx.h": "c",
+        "array": "c",
+        "string_view": "c",
+        "type_traits": "c",
+        "get_next_line.h": "c",
+        "x.h": "c",
+        "unistd.h": "c"
+    }
+}

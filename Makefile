@@ -1,29 +1,34 @@
-NAME		= main
-CC 			= cc
-FLAGS	 	= $(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
-OBJS		= $(SRCS:.c=.o)
+NAME	= so_long
+CC		= cc
+SRC		= main.c \
+		./get_next_line/get_next_line.c \
+		./get_next_line/get_next_line_utils.c \
+		move_player.c \
+		events.c \
+		map_gen.c\
+		setup.c \
+		map.c \
+		map_check.c
+OBJS	= $(SRC:.c=.o)
+CFLAGS	= -L./minilibx-linux -Wall -Werror -Wextra -O0 -g -lmlx -lXext -lX11 -lm -lbsd
+RM 		= rm -f
 
 all:
-BONUS			=	ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c \
-					ft_lstdelone.c ft_lstiter.c ft_lstlast.c \
-					ft_lstmap.c ft_lstnew.c ft_lstsize.c
+	$(CC) $(SRC) $(CFLAGS) -o so_long
 
-BONUS_OBJS		= $(BONUS:.c=.o)
-CC				= cc
-RM				= rm -f
-CFLAGS			= -Wall -Wextra -Werror -I.
-NAME			= libft.a
-all:			$(NAME)
-$(NAME):		$(OBJS)
-				ar rcs $(NAME) $(OBJS)
 clean:
-				$(RM) $(OBJS) $(BONUS_OBJS)
-fclean:			clean
-				$(RM) $(NAME) a.out libft.so
-re:				fclean $(NAME)
-bonus:			$(OBJS) $(BONUS_OBJS)
-				ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
-so:		
-				$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
-				clang -nostartfiles -shared -o libft.so $(OBJS)
-.PHONY:			all clean fclean re bonus
+	$(RM) $(OBJS)
+
+fclean: clean
+	$(RM) $(NAME)
+
+re: fclean $(NAME)
+
+show:
+	@printf "NAME  		: $(NAME)\n"
+	@printf "CC		: $(CC)\n"
+	@printf "FLAGS		: $(FLAGS)\n"
+	@printf "SRC		: $(SRC)\n"
+	@printf "OBJS		: $(OBJS)\n"
+
+PHONY: show fclean clean all
