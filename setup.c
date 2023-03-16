@@ -6,7 +6,7 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:53:01 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/14 21:41:55 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/15 20:59:24 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	settings(t_root *root)
 	root->tile.wall_bottom_right = "./textures/bottom_right.xpm";
 	root->tile.collectable = "./textures/collectible.xpm";
 	root->tile.exit = "./textures/exit.xpm";
+	root->tile.exit_open = "./textures/exit_open.xpm";
 	root->tile.exit_over_l = "./textures/player_exit_l.xpm";
 	root->tile.exit_over_r = "./textures/player_exit_r.xpm";
 	root->tile.player_r = "./textures/player_r.xpm";

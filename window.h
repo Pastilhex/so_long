@@ -6,14 +6,14 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 22:09:52 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/03/14 22:02:00 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/15 21:06:35 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WINDOW_H
 # define WINDOW_H
 # define MLX_ERROR 1
-# define MAP_PATH "./maps/medium_map.ber";
+# define MAP_PATH "./maps/bubble.ber";
 
 # include "get_next_line/get_next_line.h"
 # include "minilibx-linux/mlx.h"
@@ -38,6 +38,7 @@ typedef struct s_tile
 	char	*wall_bottom_right;
 	char	*collectable;
 	char	*exit;
+	char	*exit_open;
 	char	*exit_over_l;
 	char	*exit_over_r;
 	char	*player_r;
@@ -72,7 +73,7 @@ typedef struct s_root
 	int		i;
 	int		j;
 	int		lines;
-	int		rows;
+	int		columns;
 	int		fd;
 	int		size;
 	char	*str;
@@ -82,6 +83,8 @@ typedef struct s_root
 	char	*map_path;
 	int		pl_x;
 	int		pl_y;
+	int		exit_x;
+	int		exit_y;
 	int		collected;
 	int		collected_sum;
 	t_tile	tile;
@@ -95,10 +98,11 @@ int		handle_no_event(void *t_root);
 
 //map_check
 void	collect_count(t_root *root);
+void	search_exit(t_root *root);
 
 //map_gen
 void	map_count_lines(t_root *root);
-void	map_count_rows(t_root *root);
+void	map_count_columns(t_root *root);
 void	build_array(t_root *root);
 void	search_player(t_root *root);
 char	*gen_walls(t_root *root);

@@ -6,7 +6,7 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:25:46 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/14 21:46:08 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/15 20:59:26 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	map_count_lines(t_root *root)
 	close(root->fd);
 }
 
-void	map_count_rows(t_root *root)
+void	map_count_columns(t_root *root)
 {
 	root->size = 0;
 	root->i = -1;
@@ -36,7 +36,7 @@ void	map_count_rows(t_root *root)
 	root->str = get_next_line(root->fd);
 	while (root->str[++root->i] != '\0')
 		root->size++;
-	root->rows = root->size - 1;
+	root->columns = root->size - 1;
 	close(root->fd);
 }
 
@@ -96,20 +96,20 @@ char	*gen_walls(t_root *root)
 {
 	if (root->i == 0 && root->j == 0)
 		return (root->tile.wall_top_left);
-	else if (root->i == 0 && root->j > 0 && root->j < root->rows - 1)
+	else if (root->i == 0 && root->j > 0 && root->j < root->columns - 1)
 		return (root->tile.wall_top);
-	else if (root->i == 0 && root->j == root->rows - 1)
+	else if (root->i == 0 && root->j == root->columns - 1)
 		return (root->tile.wall_top_right);
 	else if (root->i == root->lines - 1 && root->j == 0)
 		return (root->tile.wall_bottom_left);
 	else if (root->i == root->lines - 1
-		&& root->j > 0 && root->j < root->rows - 1)
+		&& root->j > 0 && root->j < root->columns - 1)
 		return (root->tile.wall_bottom);
-	else if (root->i == root->lines - 1 && root->j == root->rows - 1)
+	else if (root->i == root->lines - 1 && root->j == root->columns - 1)
 		return (root->tile.wall_bottom_right);
 	else if (root->j == 0)
 		return (root->tile.wall_left);
-	else if (root->j == root->rows - 1)
+	else if (root->j == root->columns - 1)
 		return (root->tile.wall_right);
 	else
 		return (root->tile.wall);
