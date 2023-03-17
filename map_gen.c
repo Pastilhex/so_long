@@ -6,37 +6,28 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:25:46 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/15 20:59:26 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/17 22:50:21 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "window.h"
 
-void	map_count_lines(t_root *root)
+void	map_count(t_root *root)
 {
-	root->size = 0;
-	root->map_path = MAP_PATH;
-	root->str = "start";
-	root->fd = open(root->map_path, O_RDONLY);
-	while (root->str != NULL)
+	root->i = 1;
+	root->lines = 0;
+	root->columns = 0;
+	root->fd = open(MAP_PATH, O_RDONLY);
+	while (root->i)
 	{
 		root->str = get_next_line(root->fd);
-		root->size++;
+		if (root->str)
+			root->columns = len(root->str);
+		else
+			root->i = 0;
+		root->lines++;
 	}
-	root->lines = root->size - 1;
-	close(root->fd);
-}
-
-void	map_count_columns(t_root *root)
-{
-	root->size = 0;
-	root->i = -1;
-	root->map_path = MAP_PATH;
-	root->fd = open(root->map_path, O_RDONLY);
-	root->str = get_next_line(root->fd);
-	while (root->str[++root->i] != '\0')
-		root->size++;
-	root->columns = root->size - 1;
+	root->lines -= 1;
 	close(root->fd);
 }
 
@@ -44,12 +35,11 @@ void	build_array(t_root *root)
 {
 	root->i = 0;
 	root->j = -1;
-	root->map_path = MAP_PATH;
-	map_count_lines(root);
+	root->size = root->lines;
 	root->map_array = (char **)malloc(root->lines * sizeof(char *));
 	if (root->map_array)
 	{
-		root->fd = open(root->map_path, O_RDONLY);
+		root->fd = open(MAP_PATH, O_RDONLY);
 		while (root->size > 0)
 		{
 			root->str = get_next_line(root->fd);
@@ -76,7 +66,7 @@ void	search_player(t_root *root)
 
 	i = 0;
 	j = 0;
-	while (root->map_array[i][j] != '\0')
+	while (i < root->lines)
 	{
 		while (root->map_array[i][j] != '\n' && root->map_array[i][j] != '\0')
 		{
@@ -90,6 +80,7 @@ void	search_player(t_root *root)
 		j = 0;
 		i++;
 	}
+	root->tile.exit_flag = 0;
 }
 
 char	*gen_walls(t_root *root)

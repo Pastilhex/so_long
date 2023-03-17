@@ -6,7 +6,7 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:53:01 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/15 20:59:24 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/17 19:10:24 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	settings(t_root *root)
 
 void	start_img(t_root *root)
 {
-	while (root->map_array[root->i][root->j] != '\0')
+	while (root->i < root->lines)
 	{
 		while (root->map_array[root->i][root->j] != '\n'
 			&& root->map_array[root->i][root->j] != '\0')
@@ -105,11 +105,6 @@ void	ft_putstr(char *s)
 
 	i = 0;
 	if (s)
-	{
 		while (s[i] != '\0')
-		{
-			write(1, &s[i], 1);
-			i++;
-		}
-	}
+			write(1, &s[i++], 1);
 }

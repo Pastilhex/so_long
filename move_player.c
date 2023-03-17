@@ -6,7 +6,7 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:19:44 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/15 18:39:06 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/17 21:04:17 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,16 +72,16 @@ void	second_move(int x, int y, t_root *root)
 		root->texture_path = root->tile.exit_over_r;
 		root->tile.last_move = root->tile.exit_over_r;
 	}
-	ft_putnbr(++root->tile.moves);
-	write(1, "\n", 1);
 	gen_img(root->pl_x, root->pl_y, root);
 }
 
-void	third_move(int x, int y, t_root *root)
+void	third_move(char next_tile, int x, int y, t_root *root)
 {
 	root->map_array[root->pl_y][root->pl_x] = root->tile.a_exit;
 	root->texture_path = root->tile.exit;
 	gen_img(root->pl_x, root->pl_y, root);
+	if (next_tile == root->tile.a_collectable)
+		++root->collected;
 	root->pl_x += x;
 	root->pl_y += y;
 	if (((y == -1 || y == 1) && root->tile.last_move
@@ -95,8 +95,8 @@ void	third_move(int x, int y, t_root *root)
 		root->texture_path = root->tile.player_r;
 		root->tile.last_move = root->tile.player_r;
 	}
-	ft_putnbr(++root->tile.moves);
-	write(1, "\n", 1);
+	gen_img(root->pl_x, root->pl_y, root);
+	root->tile.exit_flag = 0;
 }
 
 void	move_player(int x, int y, t_root *root)
@@ -104,25 +104,25 @@ void	move_player(int x, int y, t_root *root)
 	char	next_tile;
 
 	next_tile = root->map_array[root->pl_y + y][root->pl_x + x];
-	if (root->collected == root->collected_sum)
-		search_exit(root);
-	if ((next_tile == root->tile.a_empty || next_tile
-			== root->tile.a_collectable) && root->tile.exit_flag == 0)
+	if (next_tile != root->tile.a_wall)
 	{
-		first_move(next_tile, x, y, root);
 		ft_putnbr(++root->tile.moves);
 		write(1, "\n", 1);
 	}
-	if (next_tile == root->tile.a_exit)
+	if (root->collected == root->collected_sum)
+		search_exit(root);
+	//Avança para espaços vazios ou coletaveis
+	if ((next_tile == root->tile.a_empty || next_tile == root->tile.a_collectable) && root->tile.exit_flag == 0)
+		first_move(next_tile, x, y, root);
+	
+	//Avança para a saída
+	if (next_tile == root->tile.a_exit && root->collected < root->collected_sum)
 		second_move(x, y, root);
-	if (next_tile == root->tile.a_exit && root->collected
-		== root->collected_sum)
+	
+	//Sai da Saída
+	if ((next_tile == root->tile.a_empty || next_tile == root->tile.a_collectable) && root->tile.exit_flag == 1)
+		third_move(next_tile, x, y, root);
+
+	if (next_tile == root->tile.a_exit && root->collected == root->collected_sum)
 		close_window(root);
-	if ((next_tile == root->tile.a_empty || next_tile
-			== root->tile.a_collectable) && root->tile.exit_flag == 1)
-	{
-		third_move(x, y, root);
-		gen_img(root->pl_x, root->pl_y, root);
-		root->tile.exit_flag = 0;
-	}
 }

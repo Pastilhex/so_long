@@ -6,7 +6,7 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 16:25:42 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/13 21:31:58 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/17 21:14:38 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 25
+#  define BUFFER_SIZE 15
 # endif
 # include	<unistd.h>
 # include	<stdio.h>

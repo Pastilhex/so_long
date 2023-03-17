@@ -6,7 +6,7 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:15:36 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/15 20:59:22 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/17 22:50:56 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ int	main(void)
 
 	root.tile.moves = 0;
 	root.mlx = mlx_init();
-	map_count_lines(&root);
-	map_count_columns(&root);
+	map_count(&root);
 	root.mlx_win = mlx_new_window
 		(root.mlx, (root.columns * 64), (root.lines * 64), "So Long Night");
 	root.img = mlx_new_image(root.mlx, (root.columns * 64), (root.lines * 64));
@@ -27,6 +26,7 @@ int	main(void)
 		(root.img, &root.bits_per_pixel, &root.line_length, &root.endian);
 	settings(&root);
 	build_array(&root);
+	verify_map(&root);
 	root.i = 0;
 	root.j = 0;
 	start_img(&root);

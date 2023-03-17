@@ -6,14 +6,14 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 22:09:52 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/03/15 21:06:35 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/17 22:51:15 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WINDOW_H
 # define WINDOW_H
 # define MLX_ERROR 1
-# define MAP_PATH "./maps/bubble.ber";
+# define MAP_PATH "./maps/mini.ber"
 
 # include "get_next_line/get_next_line.h"
 # include "minilibx-linux/mlx.h"
@@ -101,8 +101,8 @@ void	collect_count(t_root *root);
 void	search_exit(t_root *root);
 
 //map_gen
-void	map_count_lines(t_root *root);
-void	map_count_columns(t_root *root);
+void	verify_map(t_root *root);
+void	map_count(t_root *root);
 void	build_array(t_root *root);
 void	search_player(t_root *root);
 char	*gen_walls(t_root *root);

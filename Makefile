@@ -9,7 +9,8 @@ SRC		= main.c \
 		setup.c \
 		map_check.c
 OBJS	= $(SRC:.c=.o)
-CFLAGS	= -L./minilibx-linux -Wall -Werror -Wextra -O0 -g -lmlx -lXext -lX11 -lm -lbsd
+CFLAGS	= -L./minilibx-linux -Wall -Werror -Wextra -g -lmlx -lXext -lX11 -lm -lbsd
+#-03
 RM 		= rm -f
 
 all:
