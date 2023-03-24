@@ -6,14 +6,13 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 22:09:52 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/03/17 22:51:15 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/24 00:12:24 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WINDOW_H
 # define WINDOW_H
 # define MLX_ERROR 1
-# define MAP_PATH "./maps/mini.ber"
 
 # include "get_next_line/get_next_line.h"
 # include "minilibx-linux/mlx.h"
@@ -23,6 +22,13 @@
 # include <unistd.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
+
+typedef struct	s_point
+{
+	int			x;
+	int			y;
+
+}				t_point;
 
 typedef struct s_tile
 {
@@ -78,6 +84,7 @@ typedef struct s_root
 	int		size;
 	char	*str;
 	char	**map_array;
+	char	**map_check;
 	char	tx_replace;
 	char	*texture_path;
 	char	*map_path;
@@ -87,7 +94,12 @@ typedef struct s_root
 	int		exit_y;
 	int		collected;
 	int		collected_sum;
+	int		c_collectable;
+	int		c_player;
+	int		c_exit;
+	int		c_other;
 	t_tile	tile;
+	t_point	point;
 }	t_root;
 
 //events
@@ -99,11 +111,14 @@ int		handle_no_event(void *t_root);
 //map_check
 void	collect_count(t_root *root);
 void	search_exit(t_root *root);
+void	map_fail(t_root *root, int i);
+void	map_validate(t_root *root);
+void	map_check(t_root *root);
 
 //map_gen
-void	verify_map(t_root *root);
 void	map_count(t_root *root);
 void	build_array(t_root *root);
+void	build_copy(t_root *root);
 void	search_player(t_root *root);
 char	*gen_walls(t_root *root);
 char	*get_next_line(int fd);
@@ -118,5 +133,9 @@ int		ft_putnbr(int n);
 void	ft_putstr(char *s);
 void	settings(t_root *root);
 void	start_img(t_root *root);
+
+//floodfill
+void	flood_fill(t_point size, t_point begin, t_root *root);
+void	fill(t_point size, t_point cur, char to_fill, t_root *root);
 
 #endif

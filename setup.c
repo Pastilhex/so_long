@@ -6,7 +6,7 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:53:01 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/17 19:10:24 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/23 23:46:16 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	settings(t_root *root)
 
 void	start_img(t_root *root)
 {
+	root->i = 0;
+	root->j = 0;
 	while (root->i < root->lines)
 	{
 		while (root->map_array[root->i][root->j] != '\n'
@@ -64,8 +66,6 @@ void	start_img(t_root *root)
 		root->j = 0;
 		root->i++;
 	}
-	search_player(root);
-	collect_count(root);
 	root->tile.last_move = root->tile.player_r;
 }
 

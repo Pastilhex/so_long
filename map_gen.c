@@ -6,7 +6,7 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:25:46 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/17 22:50:21 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/23 12:07:07 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,28 +57,54 @@ void	build_array(t_root *root)
 		}
 	}
 	close(root->fd);
+	search_player(root);
+}
+
+void	build_copy(t_root *root)
+{
+	root->i = 0;
+	root->j = -1;
+	root->size = root->lines;
+	root->map_check = (char **)malloc(root->lines * sizeof(char *));
+	if (root->map_check)
+	{
+		root->fd = open(MAP_PATH, O_RDONLY);
+		while (root->size > 0)
+		{
+			root->str = get_next_line(root->fd);
+			root->map_check[root->i] = (char *)malloc
+				(len(root->str) * sizeof(char) + 1);
+			if (root->map_check[root->i])
+			{
+				while (++root->j < len(root->str))
+					root->map_check[root->i][root->j] = root->str[root->j];
+				root->map_check[root->i][root->j] = '\0';
+				root->j = -1;
+				root->i++;
+				root->size--;
+			}
+		}
+	}
+	close(root->fd);
 }
 
 void	search_player(t_root *root)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (i < root->lines)
+	root->i = 0;
+	root->j = 0;
+	while (root->i < root->lines)
 	{
-		while (root->map_array[i][j] != '\n' && root->map_array[i][j] != '\0')
+		while (root->map_array[root->i][root->j] != '\n' && root->map_array[root->i][root->j] != '\0')
 		{
-			if (root->map_array[i][j] == root->tile.a_player)
+			if (root->map_array[root->i][root->j] == root->tile.a_player)
 			{
-				root->pl_x = j;
-				root->pl_y = i;
+				root->pl_x = root->j;
+				root->pl_y = root->i;
 			}
-			j++;
+			root->j++;
 		}
-		j = 0;
-		i++;
+		root->j = 0;
+		root->i++;
 	}
 	root->tile.exit_flag = 0;
 }

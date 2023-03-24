@@ -6,7 +6,7 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:23:18 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/17 20:34:51 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/23 13:42:42 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ int	close_window(t_root *root)
 {
 	mlx_destroy_window(root->mlx, root->mlx_win);
 	free(root->map_array);
+	free(root->map_check);
 	free(root->str);
+	exit(0);
 
 	return (0);
 }
