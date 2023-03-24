@@ -6,7 +6,7 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 21:11:23 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/23 23:40:39 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/24 10:02:25 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,11 @@ void	map_fail(t_root *root, int i)
 		ft_putstr("Map Integrity Fail! Only one Exit allowed!\n");
 	else if (i == 7)
 		ft_putstr("Map Integrity Fail! Invalid character!\n");
+	else if (i == 8)
+	{
+		ft_putstr("Map not found!\n");
+		exit(0);
+	}
 	close_window(root);
 }
 

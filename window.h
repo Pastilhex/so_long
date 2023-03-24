@@ -6,7 +6,7 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 22:09:52 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/03/24 00:12:24 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/24 10:00:04 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,9 @@ typedef struct s_root
 	t_tile	tile;
 	t_point	point;
 }	t_root;
+
+//main
+void	check_input(char *str, t_root *root);
 
 //events
 int		close_window(t_root *root);

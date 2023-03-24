@@ -6,7 +6,7 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:25:46 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/23 12:07:07 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/24 09:59:43 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	map_count(t_root *root)
 	root->i = 1;
 	root->lines = 0;
 	root->columns = 0;
-	root->fd = open(MAP_PATH, O_RDONLY);
+	root->fd = open(root->map_path, O_RDONLY);
 	while (root->i)
 	{
 		root->str = get_next_line(root->fd);
@@ -39,7 +39,7 @@ void	build_array(t_root *root)
 	root->map_array = (char **)malloc(root->lines * sizeof(char *));
 	if (root->map_array)
 	{
-		root->fd = open(MAP_PATH, O_RDONLY);
+		root->fd = open(root->map_path, O_RDONLY);
 		while (root->size > 0)
 		{
 			root->str = get_next_line(root->fd);
@@ -68,7 +68,7 @@ void	build_copy(t_root *root)
 	root->map_check = (char **)malloc(root->lines * sizeof(char *));
 	if (root->map_check)
 	{
-		root->fd = open(MAP_PATH, O_RDONLY);
+		root->fd = open(root->map_path, O_RDONLY);
 		while (root->size > 0)
 		{
 			root->str = get_next_line(root->fd);

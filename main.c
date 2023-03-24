@@ -6,25 +6,24 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:15:36 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/24 00:18:24 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/24 10:23:32 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "window.h"
 
-void	check_input(char *str)
+void	check_input(char *str, t_root *root)
 {
-	#define MAP_PATH str;
 	int	size;
 	char ext[4] = ".ber";
 	int i;
 
 	i = 3;
-	size = len(str) - 1;
+	size = len(str);
 	while (i >= 0)
 	{
-		if (str[size - i] != ext[i])
-			exit(0);
+		if (str[size - i] != ext[3 - i])
+			map_fail(root, 8);
 		i--;
 	}
 }
@@ -32,10 +31,9 @@ void	check_input(char *str)
 int	main(int argc, char **argv)
 {
 	t_root	root;
-	char *str;
-
-	str = argv[argc - 1];
-	check_input(str);
+	
+	root.map_path = argv[argc - 1];
+	//check_input(root.map_path, &root);
 	root.tile.moves = 0;
 	root.mlx = mlx_init();
 	map_count(&root);
