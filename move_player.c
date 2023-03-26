@@ -6,7 +6,7 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:19:44 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/17 21:04:17 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/26 18:47:22 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,18 +111,15 @@ void	move_player(int x, int y, t_root *root)
 	}
 	if (root->collected == root->collected_sum)
 		search_exit(root);
-	//Avança para espaços vazios ou coletaveis
-	if ((next_tile == root->tile.a_empty || next_tile == root->tile.a_collectable) && root->tile.exit_flag == 0)
+	if ((next_tile == root->tile.a_empty || next_tile
+			== root->tile.a_collectable) && root->tile.exit_flag == 0)
 		first_move(next_tile, x, y, root);
-	
-	//Avança para a saída
 	if (next_tile == root->tile.a_exit && root->collected < root->collected_sum)
 		second_move(x, y, root);
-	
-	//Sai da Saída
-	if ((next_tile == root->tile.a_empty || next_tile == root->tile.a_collectable) && root->tile.exit_flag == 1)
+	if ((next_tile == root->tile.a_empty || next_tile
+			== root->tile.a_collectable) && root->tile.exit_flag == 1)
 		third_move(next_tile, x, y, root);
-
-	if (next_tile == root->tile.a_exit && root->collected == root->collected_sum)
+	if (next_tile == root->tile.a_exit && root->collected
+		== root->collected_sum)
 		close_window(root);
 }

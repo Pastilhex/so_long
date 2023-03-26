@@ -6,7 +6,7 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 22:09:52 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/03/24 10:00:04 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/26 19:27:52 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,18 @@
 # include <X11/keysym.h>
 # include <X11/X.h>
 
-typedef struct	s_point
+typedef struct s_point
 {
 	int			x;
 	int			y;
+}	t_point;
 
-}				t_point;
+typedef struct s_enemy
+{
+	char	*enemy;
+	int		x;
+	int		y;
+}	t_enemy;
 
 typedef struct s_tile
 {
@@ -100,23 +106,23 @@ typedef struct s_root
 	int		c_other;
 	t_tile	tile;
 	t_point	point;
+	t_enemy enemy;
 }	t_root;
 
 //main
-void	check_input(char *str, t_root *root);
 
 //events
 int		close_window(t_root *root);
 int		mouse_event(int keycode, t_root *root);
 int		handle_keypress(int keysym, t_root *root);
 int		handle_no_event(void *t_root);
+void	check_input(char *str, t_root *root);
 
 //map_check
-void	collect_count(t_root *root);
-void	search_exit(t_root *root);
 void	map_fail(t_root *root, int i);
 void	map_validate(t_root *root);
-void	map_check(t_root *root);
+void	map_counter(t_root *root);
+void	map_check(t_root *root, t_point ffsize, t_point ffbegin);
 
 //map_gen
 void	map_count(t_root *root);
@@ -137,8 +143,13 @@ void	ft_putstr(char *s);
 void	settings(t_root *root);
 void	start_img(t_root *root);
 
-//floodfill
+//map_utils
 void	flood_fill(t_point size, t_point begin, t_root *root);
 void	fill(t_point size, t_point cur, char to_fill, t_root *root);
+void	collect_count(t_root *root);
+void	search_exit(t_root *root);
+int		acess_file(t_root *root);
+
+//destroy
 
 #endif

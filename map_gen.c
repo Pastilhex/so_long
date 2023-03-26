@@ -6,7 +6,7 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:25:46 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/24 09:59:43 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/25 15:04:29 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,15 @@
 
 void	map_count(t_root *root)
 {
-	root->i = 1;
+	root->c_collectable = 0;
+	root->c_player = 0;
+	root->c_exit = 0;
+	root->c_other = 0;
 	root->lines = 0;
 	root->columns = 0;
-	root->fd = open(root->map_path, O_RDONLY);
+	root->tile.moves = 0;
+	root->i = 1;
+	root->fd = acess_file(root);
 	while (root->i)
 	{
 		root->str = get_next_line(root->fd);
@@ -26,6 +31,7 @@ void	map_count(t_root *root)
 		else
 			root->i = 0;
 		root->lines++;
+		free (root->str);
 	}
 	root->lines -= 1;
 	close(root->fd);
@@ -39,7 +45,7 @@ void	build_array(t_root *root)
 	root->map_array = (char **)malloc(root->lines * sizeof(char *));
 	if (root->map_array)
 	{
-		root->fd = open(root->map_path, O_RDONLY);
+		root->fd = acess_file(root);
 		while (root->size > 0)
 		{
 			root->str = get_next_line(root->fd);
@@ -49,15 +55,14 @@ void	build_array(t_root *root)
 			{
 				while (++root->j < len(root->str))
 					root->map_array[root->i][root->j] = root->str[root->j];
-				root->map_array[root->i][root->j] = '\0';
+				root->map_array[root->i++][root->j] = '\0';
 				root->j = -1;
-				root->i++;
 				root->size--;
 			}
+			free(root->str);
 		}
 	}
 	close(root->fd);
-	search_player(root);
 }
 
 void	build_copy(t_root *root)
@@ -78,14 +83,15 @@ void	build_copy(t_root *root)
 			{
 				while (++root->j < len(root->str))
 					root->map_check[root->i][root->j] = root->str[root->j];
-				root->map_check[root->i][root->j] = '\0';
+				root->map_check[root->i++][root->j] = '\0';
 				root->j = -1;
-				root->i++;
 				root->size--;
 			}
+			free(root->str);
 		}
 	}
 	close(root->fd);
+	search_player(root);
 }
 
 void	search_player(t_root *root)
@@ -94,7 +100,8 @@ void	search_player(t_root *root)
 	root->j = 0;
 	while (root->i < root->lines)
 	{
-		while (root->map_array[root->i][root->j] != '\n' && root->map_array[root->i][root->j] != '\0')
+		while (root->map_array[root->i][root->j] != '\n'
+			&& root->map_array[root->i][root->j] != '\0')
 		{
 			if (root->map_array[root->i][root->j] == root->tile.a_player)
 			{
