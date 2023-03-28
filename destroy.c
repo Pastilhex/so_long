@@ -6,7 +6,7 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 19:08:20 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/03/26 19:24:23 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/28 21:42:17 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@ int	close_window(t_root *root)
 	int	size;
 
 	size = root->lines - 1;
-	
-	mlx_destroy_image(root->mlx, root->img);
 	mlx_destroy_window(root->mlx, root->mlx_win);
+	mlx_destroy_display(root->mlx);
 	if (root->map_array)
 	{
 		while (size >= 0)
@@ -30,7 +29,6 @@ int	close_window(t_root *root)
 		free(root->map_array);
 		free(root->map_check);
 	}
-	mlx_destroy_display(root->mlx);
 	free(root->mlx);
 	exit(0);
 	return (0);

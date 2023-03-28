@@ -6,11 +6,21 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:15:36 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/26 18:30:51 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/28 21:47:33 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "window.h"
+void	start_window(t_root *root)
+{
+	root->mlx = mlx_init();
+	root->mlx_win = mlx_new_window
+		(root->mlx, (root->columns * 64), (root->lines * 64), "So Long");
+	root->img = mlx_new_image(root->mlx, (root->columns * 64), (root->lines * 64));
+	root->addr = mlx_get_data_addr
+		(root->img, &root->bits_per_pixel, &root->line_length, &root->endian);
+	mlx_destroy_image(root->mlx, root->img);
+}
 
 int	main(int argc, char **argv)
 {
@@ -21,13 +31,7 @@ int	main(int argc, char **argv)
 	root.map_path = argv[argc - 1];
 	check_input(root.map_path, &root);
 	map_count(&root);
-	root.mlx = mlx_init();
-	root.mlx_win = mlx_new_window
-		(root.mlx, (root.columns * 64), (root.lines * 64), "So Long");
-	root.img = mlx_new_image(root.mlx, (root.columns * 64), (root.lines * 64));
-	root.addr = mlx_get_data_addr
-		(root.img, &root.bits_per_pixel, &root.line_length, &root.endian);
-	free (root.img);
+	start_window(&root);
 	settings(&root);
 	build_array(&root);
 	build_copy(&root);

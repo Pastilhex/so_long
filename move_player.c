@@ -6,7 +6,7 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:19:44 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/26 18:47:22 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/28 21:39:23 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	gen_img(int x, int y, t_root *root)
 		(root->mlx, root->texture_path, &root->img_width, &root->img_height);
 	mlx_put_image_to_window(root->mlx,
 		root->mlx_win, root->img, (x * 64), (y * 64));
+	//free (root->img);
+	mlx_destroy_image(root->mlx, root->img);
 }
 
 void	first_move(char next_tile, int x, int y, t_root *root)
