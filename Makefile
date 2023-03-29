@@ -7,23 +7,9 @@ CC = cc
 GNL = ./get_next_line/get_next_line.c \
 		./get_next_line/get_next_line_utils.c
 
-SRC	= main.c \
-	move_player.c \
-	events.c \
-	map_gen.c\
-	setup.c \
-	map_check.c \
-	map_utils.c \
-	destroy.c
+SRC	= ./*.c
 
-SRC_BONUS = ./fbonus/main.c \
-	./fbonus/move_player.c \
-	./fbonus/events.c \
-	./fbonus/map_gen.c\
-	./fbonus/setup.c \
-	./fbonus/map_check.c \
-	./fbonus/map_utils.c \
-	./fbonus/destroy.c
+SRC_BONUS = $(wildcard fbonus/*.c)
 
 CFLAGS = -L ./minilibx-linux -Wall -Werror -Wextra -g -lmlx -lXext -lX11 -lm -lbsd
 

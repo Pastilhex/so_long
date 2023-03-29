@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_utils.c                                        :+:      :+:    :+:   */
+/*   map_utils_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 14:10:03 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/03/25 11:13:59 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/29 22:16:12 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "window.h"
-#include <unistd.h>
+#include "window_bonus.h"
 
 void	fill(t_point size, t_point cur, char to_fill, t_root *root)
 {
@@ -26,10 +25,10 @@ void	fill(t_point size, t_point cur, char to_fill, t_root *root)
 		root->c_collectable++;
 	else if (root->map_check[cur.x][cur.y] == root->tile.a_player)
 		root->c_player++;
-	else if (root->map_check[cur.x][cur.y] != root->tile.a_wall
-		&& root->map_check[cur.x][cur.y] != 'F' && root->map_check[cur.x][cur.y]
-			!= root->tile.a_empty)
-		root->c_other++;
+	// else if (root->map_check[cur.x][cur.y] != root->tile.a_wall
+	// 	&& root->map_check[cur.x][cur.y] != 'F' && root->map_check[cur.x][cur.y]
+	// 		!= root->tile.a_empty)
+	// 	root->c_other++;
 	root->map_check[cur.x][cur.y] = 'F';
 	fill(size, (t_point){cur.x - 1, cur.y}, to_fill, root);
 	fill(size, (t_point){cur.x + 1, cur.y}, to_fill, root);
@@ -47,6 +46,7 @@ void	collect_count(t_root *root)
 	root->i = 0;
 	root->j = 0;
 	root->collected_sum = 0;
+	root->enemy_sum = 0;
 	while (root->i < root->lines)
 	{
 		while (root->map_array[root->i][root->j] != '\n'
@@ -54,6 +54,8 @@ void	collect_count(t_root *root)
 		{
 			if (root->map_array[root->i][root->j] == root->tile.a_collectable)
 				root->collected_sum++;
+			if (root->map_array[root->i][root->j] == root->tile.a_enemy)
+				root->enemy_sum++;
 			root->j++;
 		}
 		root->j = 0;

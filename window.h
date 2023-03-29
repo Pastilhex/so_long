@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 22:09:52 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/03/29 15:31:01 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/03/29 18:20:12 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,6 @@ typedef struct s_point
 	int			x;
 	int			y;
 }	t_point;
-
-typedef struct s_enemy
-{
-	char	*enemy;
-	int		x;
-	int		y;
-	int		dir_x;
-	int		dir_y;
-}	t_enemy;
 
 typedef struct s_tile
 {
@@ -108,7 +99,6 @@ typedef struct s_root
 	int		c_other;
 	t_tile	tile;
 	t_point	point;
-	t_enemy enemy;
 }	t_root;
 
 //main

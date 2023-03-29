@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_player.c                                      :+:      :+:    :+:   */
+/*   move_player_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:19:44 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/29 14:47:04 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/03/29 20:19:19 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "window.h"
+#include "window_bonus.h"
 
 void	gen_img(int x, int y, t_root *root)
 {

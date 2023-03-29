@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setup.c                                            :+:      :+:    :+:   */
+/*   setup_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:53:01 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/26 19:30:19 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/29 20:37:34 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "window.h"
+#include "window_bonus.h"
 
 void	settings(t_root *root)
 {
@@ -36,6 +36,7 @@ void	settings(t_root *root)
 	root->tile.a_collectable = 'C';
 	root->tile.a_exit = 'E';
 	root->tile.a_player = 'P';
+	root->tile.a_enemy = 'X';
 	root->collected = 0;
 	root->tile.exit_flag = 0;
 }

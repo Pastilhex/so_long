@@ -1,33 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.c                                           :+:      :+:    :+:   */
+/*   events_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:23:18 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/29 15:15:21 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/03/29 22:03:06 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "window.h"
+#include "window_bonus.h"
 
 int	handle_no_event(t_root *root)
 {
 	static int count;
+	int i, n;
+	time_t t;
+	int stage;
+	int stagex;
+	int stagey;
+	n = 5;
 
+	/* Intializes random number generator */
+	srand((unsigned) time(&t));
+
+    stage = rand() % 4;
+	stagex = rand() % 1;
+	stagey = rand() % 1;
 	count++;
 	if (count == 1)
 	{
-		root->texture_path = root->tile.player_l;
-		gen_img(root->pl_x, root->pl_y, root);
+		while (n < root->lines)
+		{
+			enemy(n, root->enemy.enemys[n].x + stagex, root->enemy.enemys[n].y + stagey, stage, root->tile.right01, root);
+			n++;
+		}
 	}
-	if (count == 50000)
+	n = 0;
+	if (count == 1)
 	{
-		root->texture_path = root->tile.player_r;
-		gen_img(root->pl_x, root->pl_y, root);
+		while (n < root->lines)
+		{
+			enemy(n, root->enemy.enemys[n].x + stagex, root->enemy.enemys[n].y + stagey, stage, root->tile.right02, root);
+			n++;
+		}
 	}
-
+	n = 0;
 	if (count == 100000)
 		count = 0;	
 	return (0);

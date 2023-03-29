@@ -6,11 +6,12 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:15:36 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/28 21:47:33 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/29 22:05:41 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "window.h"
+
 void	start_window(t_root *root)
 {
 	root->mlx = mlx_init();

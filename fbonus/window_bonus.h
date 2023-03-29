@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window.h                                           :+:      :+:    :+:   */
+/*   window_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 22:09:52 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/03/29 15:19:36 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/03/29 22:01:25 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WINDOW_H
-# define WINDOW_H
+#ifndef WINDOW_BONUS_H
+# define WINDOW_BONUS_H
 # define MLX_ERROR 1
 
-# include "get_next_line/get_next_line.h"
-# include "minilibx-linux/mlx.h"
+# include "../get_next_line/get_next_line.h"
+# include "../minilibx-linux/mlx.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
+# include <time.h>
 
 typedef struct s_point
 {
@@ -31,7 +32,8 @@ typedef struct s_point
 
 typedef struct s_enemy
 {
-	char	*enemy;
+	struct s_enemy	*enemys;
+	char	*texture;
 	int		x;
 	int		y;
 	int		dir_x;
@@ -63,6 +65,7 @@ typedef struct s_tile
 	char	a_empty;
 	char	a_wall;
 	char	a_collectable;
+	char	a_enemy;
 	char	a_exit;
 	char	a_player;
 	int		moves;
@@ -71,6 +74,14 @@ typedef struct s_tile
 	char	m_j;
 	char	p_j;
 	int		exit_flag;
+	char*	left01;
+	char*	left02;
+	char*	left03;
+	char*	left04;
+	char*	right01;
+	char*	right02;
+	char*	right03;
+	char*	right04;
 }	t_tile;
 
 typedef struct s_root
@@ -86,6 +97,7 @@ typedef struct s_root
 	int		endian;
 	int		i;
 	int		j;
+	int		n;
 	int		lines;
 	int		columns;
 	int		fd;
@@ -102,6 +114,7 @@ typedef struct s_root
 	int		exit_y;
 	int		collected;
 	int		collected_sum;
+	int		enemy_sum;
 	int		c_collectable;
 	int		c_player;
 	int		c_exit;
@@ -112,6 +125,12 @@ typedef struct s_root
 }	t_root;
 
 //main
+
+//enemy
+void    enemy(int n, int x, int y, int stage, char *texture, t_root *root);
+
+//enemy_utils
+void    enemy_images(t_root *root);
 
 //events
 int		close_window(t_root *root);
