@@ -1,41 +1,47 @@
-NAME	= so_long
+NAME = so_long
 
-NAME_BONUS	= so_long_bonus
+NAME_BONUS = so_long_bonus
 
-CC		= cc
+CC = cc
 
-SRC		= main.c \
-		./get_next_line/get_next_line.c \
-		./get_next_line/get_next_line_utils.c \
-		move_player.c \
-		events.c \
-		map_gen.c\
-		setup.c \
-		map_check.c \
-		map_utils.c \
-		destroy.c
+GNL = ./get_next_line/get_next_line.c \
+		./get_next_line/get_next_line_utils.c
 
-SRC_BONUS	= enemy.c
+SRC	= main.c \
+	move_player.c \
+	events.c \
+	map_gen.c\
+	setup.c \
+	map_check.c \
+	map_utils.c \
+	destroy.c
 
-OBJS	= $(SRC:.c=.o)
+SRC_BONUS = ./fbonus/main.c \
+	./fbonus/move_player.c \
+	./fbonus/events.c \
+	./fbonus/map_gen.c\
+	./fbonus/setup.c \
+	./fbonus/map_check.c \
+	./fbonus/map_utils.c \
+	./fbonus/destroy.c
 
-CFLAGS	= -L./minilibx-linux -Wall -Werror -Wextra -g -lmlx -lXext -lX11 -lm -lbsd
-#-03
-RM 		= rm -f
+CFLAGS = -L ./minilibx-linux -Wall -Werror -Wextra -g -lmlx -lXext -lX11 -lm -lbsd
+
+RM = rm -f
 
 all:
-	$(CC) $(SRC) $(CFLAGS) -o $(NAME)
+	$(CC) $(SRC) $(GNL) $(CFLAGS) -o $(NAME)
 
 bonus:
-	$(CC) $(SRC) $(SRCB) $(CFLAGS) -o $(NAME_BONUS)
+	$(CC) $(SRC_BONUS) $(GNL) $(CFLAGS) -o $(NAME_BONUS)
 
 clean:
-	$(RM) $(OBJS)
-
-fclean: clean
 	$(RM) $(NAME)
 
-re: fclean $(NAME)
+fclean: clean
+	$(RM) $(NAME_BONUS)
+
+re: fclean all
 
 show:
 	@printf "NAME  		: $(NAME)\n"
@@ -44,6 +50,5 @@ show:
 	@printf "FLAGS		: $(CFLAGS)\n"
 	@printf "SRC		: $(SRC)\n"
 	@printf "SRC BONUS	: $(SRC_BONUS)\n"
-	@printf "OBJS		: $(OBJS)\n"
 
-PHONY: show fclean clean bonus all
+PHONY: show fclean bonus clean all

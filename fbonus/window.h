@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 22:09:52 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/03/29 15:31:01 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/03/29 15:19:36 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ typedef struct s_root
 int		close_window(t_root *root);
 int		mouse_event(int keycode, t_root *root);
 int		handle_keypress(int keysym, t_root *root);
-int		handle_no_event(void *root);
+int		handle_no_event(t_root *root);
 void	check_input(char *str, t_root *root);
 
 //map_check

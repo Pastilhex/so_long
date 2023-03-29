@@ -6,15 +6,30 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:23:18 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/29 15:23:00 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/03/29 15:15:21 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "window.h"
 
-int	handle_no_event(void *t_root)
+int	handle_no_event(t_root *root)
 {
-	(void) t_root;
+	static int count;
+
+	count++;
+	if (count == 1)
+	{
+		root->texture_path = root->tile.player_l;
+		gen_img(root->pl_x, root->pl_y, root);
+	}
+	if (count == 50000)
+	{
+		root->texture_path = root->tile.player_r;
+		gen_img(root->pl_x, root->pl_y, root);
+	}
+
+	if (count == 100000)
+		count = 0;	
 	return (0);
 }
 
