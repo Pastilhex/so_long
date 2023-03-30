@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 22:09:52 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/03/30 07:17:02 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/03/30 19:03:24 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ typedef struct s_enemy
 	int		enemy;
 	int		x;
 	int		y;
+	int		dir;
 	int		last_img;
 	char	*last_move;
+
 	struct s_enemy	*id;
 }	t_enemy;
 
@@ -127,12 +129,15 @@ typedef struct s_root
 
 //main
 
-//enemy
+//enemy_bonus
 void    enemy(int id, int x, int y, t_root *root);
+void	enemy_move(int id, int y, int x, t_root *m);
 
 //enemy_utils
 void    enemy_images(t_root *root);
-int		enemy_step(void);
+int		enemy_srand(void);
+int		enemy_rand(void);
+void	search_enemy(t_root *root);
 
 //events
 int		close_window(t_root *root);

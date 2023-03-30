@@ -3,68 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   events_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:23:18 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/30 07:19:37 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/03/30 20:45:55 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "window_bonus.h"
 
-int	handle_no_event(t_root *root)
+int	handle_no_event(t_root *m)
 {
 	static int 	count;
 	int			id;
+	int			x;
+	int			y;
 
 	count++;
 	id = 0;
-	if (count == 1)
-	{
-		while (id < root->enemy_sum)
-		{
-			enemy(id, enemy_step(), enemy_step(), root);
-			id++;
-		}
-	}
-	id = 0;
 	if (count == 25000)
 	{
-		while (id < root->lines)
+		if (!m->enemy.id[id].dir)
+			m->enemy.id[id].dir = -1;
+		while (id < m->enemy_sum)
 		{
-			enemy(id, enemy_step(), enemy_step(), root);
-			id++;
+			x = enemy_rand();
+			y = 0;
+			if (x == 0)
+				y = enemy_rand();
+			m->enemy.id[id].dir = x;
+			if (m->map_array[m->enemy.id[id].y + y][m->enemy.id[id].x + x] != m->tile.a_wall
+					|| m->map_array[m->enemy.id[id].y + y][m->enemy.id[id].x + x] != m->tile.a_enemy
+					|| m->map_array[m->enemy.id[id].y + y][m->enemy.id[id].x + x ] != m->tile.a_collectable
+					|| m->map_array[m->enemy.id[id].y + y][m->enemy.id[id].x + x] != m->tile.a_exit)
+				enemy(id++, y, x, m);
+			count = 0;
 		}
 	}
-	id = 0;
-	if (count == 50000)
-	{
-		while (id < root->lines)
-		{
-			enemy(id, enemy_step(), enemy_step(), root);
-			id++;
-		}
-	}
-	id = 0;
-	if (count == 75000)
-	{
-		while (id < root->lines)
-		{
-			enemy(id, enemy_step(), enemy_step(), root);
-			id++;
-		}
-	}
-	id = 0;
-	if (count == 100000)
-		count = 0;	
-	return (0);
-}
-
-int	mouse_event(int keycode, t_root *root)
-{
-	(void) root;
-	if (keycode == 1)
-		printf("MOUSE_LEFT_BUTTON\n");
 	return (0);
 }
 

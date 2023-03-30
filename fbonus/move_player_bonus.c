@@ -6,7 +6,7 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:19:44 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/29 20:19:19 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/30 20:40:00 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	first_move(char next_tile, int x, int y, t_root *root)
 	gen_img(root->pl_x, root->pl_y, root);
 	if (next_tile == root->tile.a_collectable)
 		++root->collected;
+	root->map_array[root->pl_y + y][root->pl_x + x] = root->tile.a_player;
 	root->pl_x += x;
 	root->pl_y += y;
 	if ((x == -1) || (x == -1 && root->tile.last_move
@@ -55,6 +56,7 @@ void	second_move(int x, int y, t_root *root)
 	root->map_array[root->pl_y][root->pl_x] = root->tile.a_empty;
 	root->texture_path = root->tile.empty;
 	gen_img(root->pl_x, root->pl_y, root);
+	root->map_array[root->pl_y + y][root->pl_x + x] = root->tile.a_player;
 	root->pl_x += x;
 	root->pl_y += y;
 	if ((x == -1) || ((y == -1 || y == 1)
@@ -83,6 +85,7 @@ void	third_move(char next_tile, int x, int y, t_root *root)
 	gen_img(root->pl_x, root->pl_y, root);
 	if (next_tile == root->tile.a_collectable)
 		++root->collected;
+	root->map_array[root->pl_y + y][root->pl_x + x] = root->tile.a_player;
 	root->pl_x += x;
 	root->pl_y += y;
 	if (((y == -1 || y == 1) && root->tile.last_move
@@ -120,7 +123,7 @@ void	move_player(int x, int y, t_root *root)
 	if ((next_tile == root->tile.a_empty || next_tile
 			== root->tile.a_collectable) && root->tile.exit_flag == 1)
 		third_move(next_tile, x, y, root);
-	if (next_tile == root->tile.a_exit && root->collected
-		== root->collected_sum)
+	if ((next_tile == root->tile.a_exit && root->collected
+		== root->collected_sum) || next_tile == root->tile.a_enemy)
 		close_window(root);
 }
