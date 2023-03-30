@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 22:09:52 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/03/29 22:01:25 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/30 07:17:02 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ typedef struct s_point
 
 typedef struct s_enemy
 {
-	struct s_enemy	*enemys;
-	char	*texture;
+	int		enemy;
 	int		x;
 	int		y;
-	int		dir_x;
-	int		dir_y;
+	int		last_img;
+	char	*last_move;
+	struct s_enemy	*id;
 }	t_enemy;
 
 typedef struct s_tile
@@ -107,6 +107,7 @@ typedef struct s_root
 	char	**map_check;
 	char	tx_replace;
 	char	*texture_path;
+	char	**texture;
 	char	*map_path;
 	int		pl_x;
 	int		pl_y;
@@ -127,10 +128,11 @@ typedef struct s_root
 //main
 
 //enemy
-void    enemy(int n, int x, int y, int stage, char *texture, t_root *root);
+void    enemy(int id, int x, int y, t_root *root);
 
 //enemy_utils
 void    enemy_images(t_root *root);
+int		enemy_step(void);
 
 //events
 int		close_window(t_root *root);

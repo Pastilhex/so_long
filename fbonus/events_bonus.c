@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:23:18 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/29 22:03:06 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/30 07:19:37 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,39 +14,47 @@
 
 int	handle_no_event(t_root *root)
 {
-	static int count;
-	int i, n;
-	time_t t;
-	int stage;
-	int stagex;
-	int stagey;
-	n = 5;
+	static int 	count;
+	int			id;
 
-	/* Intializes random number generator */
-	srand((unsigned) time(&t));
-
-    stage = rand() % 4;
-	stagex = rand() % 1;
-	stagey = rand() % 1;
 	count++;
+	id = 0;
 	if (count == 1)
 	{
-		while (n < root->lines)
+		while (id < root->enemy_sum)
 		{
-			enemy(n, root->enemy.enemys[n].x + stagex, root->enemy.enemys[n].y + stagey, stage, root->tile.right01, root);
-			n++;
+			enemy(id, enemy_step(), enemy_step(), root);
+			id++;
 		}
 	}
-	n = 0;
-	if (count == 1)
+	id = 0;
+	if (count == 25000)
 	{
-		while (n < root->lines)
+		while (id < root->lines)
 		{
-			enemy(n, root->enemy.enemys[n].x + stagex, root->enemy.enemys[n].y + stagey, stage, root->tile.right02, root);
-			n++;
+			enemy(id, enemy_step(), enemy_step(), root);
+			id++;
 		}
 	}
-	n = 0;
+	id = 0;
+	if (count == 50000)
+	{
+		while (id < root->lines)
+		{
+			enemy(id, enemy_step(), enemy_step(), root);
+			id++;
+		}
+	}
+	id = 0;
+	if (count == 75000)
+	{
+		while (id < root->lines)
+		{
+			enemy(id, enemy_step(), enemy_step(), root);
+			id++;
+		}
+	}
+	id = 0;
 	if (count == 100000)
 		count = 0;	
 	return (0);

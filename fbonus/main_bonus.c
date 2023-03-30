@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:15:36 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/29 20:19:19 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/30 07:19:47 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	main(int argc, char **argv)
 	t_root	root;
 	t_point	ffsize;
 	t_point	ffbegin;
-	t_enemy enemy;
 
 	root.map_path = argv[argc - 1];
 	check_input(root.map_path, &root);
@@ -40,7 +39,7 @@ int	main(int argc, char **argv)
 	ffsize = (t_point){root.lines, root.columns};
 	ffbegin = (t_point){root.pl_y, root.pl_x};
 	map_check(&root, ffsize, ffbegin);
-	enemy_images(&enemy);
+	enemy_images(&root);
 	start_img(&root);
 	mlx_loop_hook(root.mlx, &handle_no_event, &root);
 	mlx_hook(root.mlx_win, 2, 1L << 0, &handle_keypress, &root);

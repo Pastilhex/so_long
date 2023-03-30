@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:53:01 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/29 20:37:34 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/30 07:21:49 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void	start_img(t_root *root)
 				root->texture_path = root->tile.exit;
 			else if (root->map_array[root->i][root->j] == root->tile.a_player)
 				root->texture_path = root->tile.player_r;
+			else if (root->map_array[root->i][root->j] == root->tile.a_enemy)
+				root->texture_path = root->texture[0];
 			gen_img(root->j, root->i, root);
 			root->j++;
 		}
