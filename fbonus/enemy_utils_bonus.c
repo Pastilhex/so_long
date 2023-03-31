@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enemy_utils_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 20:31:36 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/03/30 20:54:13 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/30 23:39:40 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void    enemy_images(t_root *root)
 		root->texture[6] = "./textures/enemy03_r.xpm";
 		root->texture[7] = "./textures/enemy04_r.xpm";
 	}
+	root->enemy.id[0].l_img = 0;
+	root->enemy.id[0].r_img = 4;
 	search_enemy(root);
 }
 
@@ -72,7 +74,7 @@ void	search_enemy(t_root *root)
 				{
 					root->enemy.id[n].x = root->j;
 					root->enemy.id[n].y = root->i;
-					root->enemy.id[n].last_img = 0;
+					root->enemy.id[n].l_img = 0;
 					root->enemy.id[n].last_move = root->texture[0];
 					n++;
 				}

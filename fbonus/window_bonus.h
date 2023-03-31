@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 22:09:52 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/03/30 19:03:24 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/30 23:30:18 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ typedef struct s_enemy
 	int		x;
 	int		y;
 	int		dir;
-	int		last_img;
+	int		l_img;
+	int		r_img;
 	char	*last_move;
 
 	struct s_enemy	*id;

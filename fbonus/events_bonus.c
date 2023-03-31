@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:23:18 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/30 20:45:55 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/30 23:14:32 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	handle_no_event(t_root *m)
 
 	count++;
 	id = 0;
-	if (count == 25000)
+	if (count == 50000)
 	{
 		if (!m->enemy.id[id].dir)
 			m->enemy.id[id].dir = -1;
