@@ -6,7 +6,7 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:19:44 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/30 20:40:00 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/01 16:47:44 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,7 @@ void	move_player(int x, int y, t_root *root)
 	next_tile = root->map_array[root->pl_y + y][root->pl_x + x];
 	if (next_tile != root->tile.a_wall)
 	{
-		ft_putnbr(++root->tile.moves);
-		write(1, "\n", 1);
+		print_moves(root);
 	}
 	if (root->collected == root->collected_sum)
 		search_exit(root);
@@ -124,6 +123,6 @@ void	move_player(int x, int y, t_root *root)
 			== root->tile.a_collectable) && root->tile.exit_flag == 1)
 		third_move(next_tile, x, y, root);
 	if ((next_tile == root->tile.a_exit && root->collected
-		== root->collected_sum) || next_tile == root->tile.a_enemy)
+			== root->collected_sum) || next_tile == root->tile.a_enemy)
 		close_window(root);
 }

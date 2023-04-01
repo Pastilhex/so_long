@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   window_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 22:09:52 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/03/30 23:30:18 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/01 22:22:18 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WINDOW_BONUS_H
 # define WINDOW_BONUS_H
-# define MLX_ERROR 1
-
 # include "../get_next_line/get_next_line.h"
 # include "../minilibx-linux/mlx.h"
 # include <stdio.h>
@@ -23,7 +21,6 @@
 # include <X11/keysym.h>
 # include <X11/X.h>
 # include <time.h>
-
 typedef struct s_point
 {
 	int			x;
@@ -35,10 +32,13 @@ typedef struct s_enemy
 	int		enemy;
 	int		x;
 	int		y;
-	int		dir;
+	int		last_x;
+	int		last_y;
+	int		last_img;
+	int		last_move;
 	int		l_img;
 	int		r_img;
-	char	*last_move;
+	
 
 	struct s_enemy	*id;
 }	t_enemy;
@@ -65,6 +65,9 @@ typedef struct s_tile
 	char	*player_exit_r;
 	char	*player_exit_l;
 	char	*last_move;
+	char	*score_board;
+	char	*oneup;
+	char	*insert;
 	char	a_empty;
 	char	a_wall;
 	char	a_collectable;
@@ -129,20 +132,22 @@ typedef struct s_root
 }	t_root;
 
 //main
+void	print_map(t_root *root);
 
 //enemy_bonus
 void    enemy(int id, int x, int y, t_root *root);
-void	enemy_move(int id, int y, int x, t_root *m);
+void	enemy_check_move(int id, int x, t_root *m);
 
 //enemy_utils
 void    enemy_images(t_root *root);
 int		enemy_srand(void);
 int		enemy_rand(void);
 void	search_enemy(t_root *root);
+void	print_moves(t_root *root);
 
 //events
 int		close_window(t_root *root);
-int		mouse_event(int keycode, t_root *root);
+int		enemy_move(int id, t_root *m);
 int		handle_keypress(int keysym, t_root *root);
 int		handle_no_event(t_root *root);
 void	check_input(char *str, t_root *root);
@@ -164,6 +169,7 @@ char	*get_next_line(int fd);
 //move_player
 void	gen_img(int x, int y, t_root *root);
 void	move_player(int x, int y, t_root *root);
+char	*ft_itoa_bonus(int nbr);
 
 //setup
 int		ft_putchar(char c);
@@ -180,5 +186,8 @@ void	search_exit(t_root *root);
 int		acess_file(t_root *root);
 
 //destroy
+int		close_window(t_root *root);
+void	free_main_array(t_root *root);
+void	free_bonus_array(t_root *root);
 
 #endif

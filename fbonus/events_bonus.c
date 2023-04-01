@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:23:18 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/30 23:14:32 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/01 14:46:48 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,18 @@
 
 int	handle_no_event(t_root *m)
 {
-	static int 	count;
+	static int	count;
 	int			id;
-	int			x;
-	int			y;
 
 	count++;
 	id = 0;
-	if (count == 50000)
-	{
-		if (!m->enemy.id[id].dir)
-			m->enemy.id[id].dir = -1;
+	if (count == 20000)
+		id = enemy_move(id, m);
+	if (count % 20000 == 0)
 		while (id < m->enemy_sum)
-		{
-			x = enemy_rand();
-			y = 0;
-			if (x == 0)
-				y = enemy_rand();
-			m->enemy.id[id].dir = x;
-			if (m->map_array[m->enemy.id[id].y + y][m->enemy.id[id].x + x] != m->tile.a_wall
-					|| m->map_array[m->enemy.id[id].y + y][m->enemy.id[id].x + x] != m->tile.a_enemy
-					|| m->map_array[m->enemy.id[id].y + y][m->enemy.id[id].x + x ] != m->tile.a_collectable
-					|| m->map_array[m->enemy.id[id].y + y][m->enemy.id[id].x + x] != m->tile.a_exit)
-				enemy(id++, y, x, m);
-			count = 0;
-		}
-	}
+			enemy(id++, 0, 0, m);
+	if (count == 60000)
+		count = 0;
 	return (0);
 }
 
@@ -73,4 +59,28 @@ void	check_input(char *str, t_root *root)
 			map_fail(root, 8);
 		i--;
 	}
+}
+
+int	enemy_move(int id, t_root *m)
+{
+	char		next_tile;
+	int			x;
+	int			y;
+
+	while (id < m->enemy_sum)
+	{
+		x = enemy_rand();
+		y = enemy_rand();
+		if (x == -1 || x == 1)
+			y = 0;
+		if (y == -1 || y == 1)
+			x = 0;
+		next_tile = m->map_array[m->enemy.id[id].y + y][m->enemy.id[id].x + x];
+		if (next_tile != m->tile.a_wall && next_tile != m->tile.a_collectable
+			&& next_tile != m->tile.a_exit && next_tile != m->tile.a_enemy)
+			enemy(id++, y, x, m);
+		if (next_tile == m->tile.a_player)
+			close_window(m);
+	}
+	return (id);
 }

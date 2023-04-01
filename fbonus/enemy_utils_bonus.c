@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   enemy_utils_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 20:31:36 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/03/30 23:39:40 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/01 22:32:31 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "window_bonus.h"
 
-void    enemy_images(t_root *root)
+void	enemy_images(t_root *root)
 {
 	root->texture = (char **)malloc(8 * sizeof(char *));
 	if (root->texture)
@@ -26,32 +26,29 @@ void    enemy_images(t_root *root)
 		root->texture[6] = "./textures/enemy03_r.xpm";
 		root->texture[7] = "./textures/enemy04_r.xpm";
 	}
-	root->enemy.id[0].l_img = 0;
-	root->enemy.id[0].r_img = 4;
 	search_enemy(root);
 }
 
-int		enemy_srand(void)
+int	enemy_rand(void)
 {
-	time_t	t;
-
-	srand((unsigned) time(&t));
 	int	num;
-    num = rand() % 3;
-	if (num == 2)
+
+	num = rand() % 30;
+	if (num >= 0 && num < 15)
 		return (-1);
+	else if (num >= 15 && num < 20)
+		return (0);
 	else
-		return (num);
+		return (1);
 }
 
-int		enemy_rand(void)
+void	search_enemy_parameters(int n, t_root *root)
 {
-	int num = rand() % 3;
-
-	if (num >= 2)
-		return (-1);
-	else
-		return (num);
+	root->enemy.id[n].x = root->j;
+	root->enemy.id[n].y = root->i;
+	root->enemy.id[n].last_img = 0;
+	root->enemy.id[n].l_img = 0;
+	root->enemy.id[n].r_img = 4;
 }
 
 void	search_enemy(t_root *root)
@@ -61,7 +58,8 @@ void	search_enemy(t_root *root)
 	root->i = 0;
 	root->j = 0;
 	n = 0;
-	root->enemy.id = (struct s_enemy *)malloc(root->enemy_sum * sizeof(struct s_enemy));
+	root->enemy.id = (struct s_enemy *)malloc
+		(root->enemy_sum * sizeof(struct s_enemy));
 	if (root->enemy.id)
 	{
 		while (root->i < root->lines && n < root->enemy_sum)
@@ -71,17 +69,24 @@ void	search_enemy(t_root *root)
 				&& n < root->enemy_sum)
 			{
 				if (root->map_array[root->i][root->j] == root->tile.a_enemy)
-				{
-					root->enemy.id[n].x = root->j;
-					root->enemy.id[n].y = root->i;
-					root->enemy.id[n].l_img = 0;
-					root->enemy.id[n].last_move = root->texture[0];
-					n++;
-				}
+					search_enemy_parameters(n++, root);
 				root->j++;
 			}
 			root->j = 0;
 			root->i++;
 		}
 	}
+}
+
+void	print_moves(t_root *m)
+{
+	char	*nmoves;
+
+	nmoves = ft_itoa_bonus(++m->tile.moves);
+
+	m->img = mlx_xpm_file_to_image(m->mlx, m->tile.oneup, &m->img_width, &m->img_height);
+	mlx_put_image_to_window(m->mlx, m->mlx_win, m->img, 0, 0);
+	
+	mlx_string_put(m->mlx, m->mlx_win, (m->columns / 2) * 64 + 32, 60, 0x00FFFFFF, nmoves);
+	mlx_destroy_image(m->mlx, m->img);
 }

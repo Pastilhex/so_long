@@ -6,7 +6,7 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:15:36 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/29 22:05:41 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/01 14:49:28 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	start_window(t_root *root)
 	root->mlx = mlx_init();
 	root->mlx_win = mlx_new_window
 		(root->mlx, (root->columns * 64), (root->lines * 64), "So Long");
-	root->img = mlx_new_image(root->mlx, (root->columns * 64), (root->lines * 64));
+	root->img = mlx_new_image(root->mlx,
+			(root->columns * 64), (root->lines * 64));
 	root->addr = mlx_get_data_addr
 		(root->img, &root->bits_per_pixel, &root->line_length, &root->endian);
 	mlx_destroy_image(root->mlx, root->img);

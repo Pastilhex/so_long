@@ -6,7 +6,7 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:53:01 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/30 19:46:54 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/01 22:32:08 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	settings(t_root *root)
 {
+
 	root->tile.empty = "./textures/empty.xpm";
 	root->tile.wall = "./textures/wall.xpm";
 	root->tile.wall_left = "./textures/left.xpm";
@@ -31,6 +32,9 @@ void	settings(t_root *root)
 	root->tile.exit_over_r = "./textures/player_exit_r.xpm";
 	root->tile.player_r = "./textures/player_r.xpm";
 	root->tile.player_l = "./textures/player_l.xpm";
+	root->tile.score_board = "./texture/score.xpm";
+	root->tile.oneup = "./texture/1up.xpm";
+	root->tile.insert = "./texture/insert.xpm";
 	root->tile.a_empty = '0';
 	root->tile.a_wall = '1';
 	root->tile.a_collectable = 'C';
@@ -43,8 +47,6 @@ void	settings(t_root *root)
 
 void	start_img(t_root *root)
 {
-	root->i = 0;
-	root->j = 0;
 	while (root->i < root->lines)
 	{
 		while (root->map_array[root->i][root->j] != '\n'

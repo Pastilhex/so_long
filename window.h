@@ -6,13 +6,12 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 22:09:52 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/03/29 18:20:12 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/01 16:44:52 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WINDOW_H
 # define WINDOW_H
-# define MLX_ERROR 1
 
 # include "get_next_line/get_next_line.h"
 # include "minilibx-linux/mlx.h"

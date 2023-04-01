@@ -6,7 +6,7 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 14:10:03 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/03/29 22:16:12 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/03/31 10:54:47 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,6 @@ void	fill(t_point size, t_point cur, char to_fill, t_root *root)
 		root->c_collectable++;
 	else if (root->map_check[cur.x][cur.y] == root->tile.a_player)
 		root->c_player++;
-	// else if (root->map_check[cur.x][cur.y] != root->tile.a_wall
-	// 	&& root->map_check[cur.x][cur.y] != 'F' && root->map_check[cur.x][cur.y]
-	// 		!= root->tile.a_empty)
-	// 	root->c_other++;
 	root->map_check[cur.x][cur.y] = 'F';
 	fill(size, (t_point){cur.x - 1, cur.y}, to_fill, root);
 	fill(size, (t_point){cur.x + 1, cur.y}, to_fill, root);
