@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 09:17:24 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/01 16:45:23 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/02 14:51:42 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,10 @@ char	*ft_itoa_bonus(int n)
 	nbr = n;
 	newvalue = (char *)malloc(counter(nbr) * sizeof(char) + 1);
 	if (!newvalue)
+	{
+		free (newvalue);
 		return (0);
+	}
 	result = str(newvalue, nbr, (counter(nbr) * sizeof(char)));
 	return (result);
 }

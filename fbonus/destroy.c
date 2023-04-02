@@ -6,7 +6,7 @@
 /*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 19:08:20 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/02 12:55:02 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/02 14:40:50 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 int	close_window(t_root *root)
 {
 	ft_putstr("GAME OVER\n");
-	// if (root->img)
-	// 	free(root->img);
 	mlx_destroy_window(root->mlx, root->mlx_win);
 	mlx_destroy_display(root->mlx);
 	free_main_array(root);
