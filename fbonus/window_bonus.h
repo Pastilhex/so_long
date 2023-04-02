@@ -6,7 +6,7 @@
 /*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 22:09:52 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/02 07:18:39 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/02 08:45:49 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_tile
 	char	*score_board;
 	char	*oneup;
 	char	*insert;
+	char	*gameover;
 	char	a_empty;
 	char	a_wall;
 	char	a_collectable;
