@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:53:01 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/01 22:32:08 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/02 07:18:33 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	settings(t_root *root)
 	root->tile.exit_over_r = "./textures/player_exit_r.xpm";
 	root->tile.player_r = "./textures/player_r.xpm";
 	root->tile.player_l = "./textures/player_l.xpm";
-	root->tile.score_board = "./texture/score.xpm";
-	root->tile.oneup = "./texture/1up.xpm";
-	root->tile.insert = "./texture/insert.xpm";
+	root->tile.score_board = "./textures/score.xpm";
+	root->tile.oneup = "./textures/1up.xpm";
+	root->tile.insert = "./textures/insert.xpm";
 	root->tile.a_empty = '0';
 	root->tile.a_wall = '1';
 	root->tile.a_collectable = 'C';

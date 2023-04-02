@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enemy_utils_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 20:31:36 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/01 22:32:31 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/02 08:20:48 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,22 @@ void	search_enemy(t_root *root)
 void	print_moves(t_root *m)
 {
 	char	*nmoves;
+	char	*score;
+	int		middle;
 
 	nmoves = ft_itoa_bonus(++m->tile.moves);
-
+	score = ft_itoa_bonus(m->collected);
 	m->img = mlx_xpm_file_to_image(m->mlx, m->tile.oneup, &m->img_width, &m->img_height);
-	mlx_put_image_to_window(m->mlx, m->mlx_win, m->img, 0, 0);
-	
-	mlx_string_put(m->mlx, m->mlx_win, (m->columns / 2) * 64 + 32, 60, 0x00FFFFFF, nmoves);
+	mlx_put_image_to_window(m->mlx, m->mlx_win, m->img, 64, 0);
+	m->img = mlx_xpm_file_to_image(m->mlx, m->tile.insert, &m->img_width, &m->img_height);
+	mlx_put_image_to_window(m->mlx, m->mlx_win, m->img, (m->columns - 2) * 64, 0);
+	mlx_string_put(m->mlx, m->mlx_win, 93, 30, 0x00FFFFFF, nmoves);
+	if (((m->columns) / 2) % 2 == 0)
+		middle = ((m->columns) / 2) * 64;
+	else
+		middle = ((m->columns) / 2) * 64 - 32;
+	m->img = mlx_xpm_file_to_image(m->mlx, m->tile.score_board, &m->img_width, &m->img_height);
+	mlx_put_image_to_window(m->mlx, m->mlx_win, m->img, middle, 0);
+	mlx_string_put(m->mlx, m->mlx_win, middle + 30, 30, 0x00FFFFFF, score);
 	mlx_destroy_image(m->mlx, m->img);
 }
