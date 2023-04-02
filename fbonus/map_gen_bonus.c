@@ -6,7 +6,7 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:25:46 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/29 20:20:12 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/02 17:48:34 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,9 +119,9 @@ void	search_player(t_root *root)
 char	*gen_walls(t_root *root)
 {
 	if (root->i == 0 && root->j == 0)
-		return (root->tile.wall_top_left);
+		return (root->tile.wall_top_left_bonus);
 	else if (root->i == 0 && root->j > 0 && root->j < root->columns - 1)
-		return (root->tile.wall_top);
+		return (root->tile.wall_top_bonus);
 	else if (root->i == 0 && root->j == root->columns - 1)
 		return (root->tile.wall_top_right);
 	else if (root->i == root->lines - 1 && root->j == 0)

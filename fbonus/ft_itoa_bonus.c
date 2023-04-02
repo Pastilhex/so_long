@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 09:17:24 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/02 14:51:42 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/02 18:12:46 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "window_bonus.h"
 
-long int	counter(long int n)
+int	counter(long int n)
 {
 	int	count;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_player_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:19:44 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/02 12:24:45 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/02 17:53:52 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,5 +124,5 @@ void	move_player(int x, int y, t_root *root)
 		third_move(next_tile, x, y, root);
 	if ((next_tile == root->tile.a_exit && root->collected
 			== root->collected_sum) || next_tile == root->tile.a_enemy)
-			close_window(root);
+		close_window(root);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enemy_utils_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 20:31:36 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/02 14:56:44 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/02 17:56:33 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ void	enemy_images(t_root *root)
 		root->texture[5] = "./textures/enemy02_r.xpm";
 		root->texture[6] = "./textures/enemy03_r.xpm";
 		root->texture[7] = "./textures/enemy04_r.xpm";
+		root->tile.score_board = "./textures/score.xpm";
+		root->tile.oneup = "./textures/1up.xpm";
+		root->tile.insert = "./textures/insert.xpm";
+		root->tile.wall_top_left_bonus = "./textures/top_left_bonus.xpm";
+		root->tile.wall_top_bonus = "./textures/top_bonus.xpm";
 	}
 	search_enemy(root);
 }
@@ -80,27 +85,28 @@ void	search_enemy(t_root *root)
 
 void	print_moves(t_root *m)
 {
-	char	*nmoves;
-	char	*score;
-	int		middle;
-
-	nmoves = ft_itoa_bonus(++m->tile.moves);
-	score = ft_itoa_bonus(m->collected * 100);
-	m->img = mlx_xpm_file_to_image(m->mlx, m->tile.oneup, &m->img_width, &m->img_height);
+	m->enemy.nmoves = ft_itoa_bonus(++m->tile.moves);
+	m->enemy.score = ft_itoa_bonus(m->collected * 100);
+	m->img = mlx_xpm_file_to_image(m->mlx, m->tile.oneup,
+			&m->img_width, &m->img_height);
 	mlx_put_image_to_window(m->mlx, m->mlx_win, m->img, 64, 0);
 	mlx_destroy_image(m->mlx, m->img);
-	m->img = mlx_xpm_file_to_image(m->mlx, m->tile.insert, &m->img_width, &m->img_height);
-	mlx_put_image_to_window(m->mlx, m->mlx_win, m->img, (m->columns - 2) * 64, 0);
+	m->img = mlx_xpm_file_to_image(m->mlx, m->tile.insert,
+			&m->img_width, &m->img_height);
+	mlx_put_image_to_window(m->mlx, m->mlx_win, m->img,
+		(m->columns - 2) * 64, 0);
 	mlx_destroy_image(m->mlx, m->img);
-	mlx_string_put(m->mlx, m->mlx_win, 93, 30, 0x00FFFFFF, nmoves);
+	mlx_string_put(m->mlx, m->mlx_win, 93, 30, 0x00FFFFFF, m->enemy.nmoves);
 	if (((m->columns) / 2) % 2 == 0)
-		middle = ((m->columns) / 2) * 64 - 32;
+		m->enemy.middle = ((m->columns) / 2) * 64 - 32;
 	else
-		middle = ((m->columns) / 2) * 64;
-	m->img = mlx_xpm_file_to_image(m->mlx, m->tile.score_board, &m->img_width, &m->img_height);
-	mlx_put_image_to_window(m->mlx, m->mlx_win, m->img, middle, 0);
+		m->enemy.middle = ((m->columns) / 2) * 64;
+	m->img = mlx_xpm_file_to_image(m->mlx, m->tile.score_board,
+			&m->img_width, &m->img_height);
+	mlx_put_image_to_window(m->mlx, m->mlx_win, m->img, m->enemy.middle, 0);
 	mlx_destroy_image(m->mlx, m->img);
-	mlx_string_put(m->mlx, m->mlx_win, middle + 25, 30, 0x00FFFFFF, score);
-	free (score);
-	free (nmoves);
+	mlx_string_put(m->mlx, m->mlx_win, m->enemy.middle + 25,
+		30, 0x00FFFFFF, m->enemy.score);
+	free (m->enemy.score);
+	free (m->enemy.nmoves);
 }
