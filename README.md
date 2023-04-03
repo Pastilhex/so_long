@@ -1,4 +1,9 @@
-# so_long
-A little game developed with 42 Minilibx named "So Long"
+~~~# So Long #~~~
+~
+So Long is part of a set of exercises presented by school 42 during the course called Common Core.
 
-![final](https://user-images.githubusercontent.com/110631286/229544306-5e89cd18-f870-4e08-afdc-84fbf5319fdd.gif)
+The project consists of developing a game in C language using a MinilibX library. 
+
+"The MinilibX is a small C library used for rendering graphics, primarily used by 42 students. This library is built on top of the X Window System API, to provide a much simpler programming interface suited for beginners. Indeed, no X knowledge is needed at all to render graphics properly using this kind of library."
+
+![Peek 2023-04-03 19-51](https://user-images.githubusercontent.com/110631286/229603225-56e64cfe-6930-43d8-980a-47b538366887.gif)
