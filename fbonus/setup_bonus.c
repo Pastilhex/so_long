@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:53:01 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/02 17:56:49 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/19 18:58:11 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	settings(t_root *root)
 	root->tile.a_enemy = 'X';
 	root->collected = 0;
 	root->tile.exit_flag = 0;
+	root->texture = NULL;
 }
 
 void	start_img(t_root *root)

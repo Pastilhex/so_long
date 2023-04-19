@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 19:08:20 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/19 17:45:33 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/19 18:52:27 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	free_bonus_array(t_root *root)
 {
 	if (root->texture != NULL)
 	{
-		free(root->texture);
 		free(root->enemy.id);
+		free(root->texture);
 	}
 }
