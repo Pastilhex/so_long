@@ -6,17 +6,11 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:23:18 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/29 15:23:00 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/19 14:42:43 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "window.h"
-
-int	handle_no_event(void *t_root)
-{
-	(void) t_root;
-	return (0);
-}
 
 int	mouse_event(int keycode, t_root *root)
 {

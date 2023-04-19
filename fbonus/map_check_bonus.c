@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 21:11:23 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/29 22:17:29 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/19 17:10:29 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ void	map_counter(t_root *root)
 
 void	map_check(t_root *root, t_point ffsize, t_point ffbegin)
 {
+	collect_count(root);
 	root->i = 0;
 	root->j = 0;
-	collect_count(root);
 	while (root->i < root->lines)
 	{
 		if (root->map_array[root->i][root->j] != root->tile.a_wall

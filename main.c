@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:15:36 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/01 14:49:28 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/19 14:42:52 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	main(int argc, char **argv)
 	ffbegin = (t_point){root.pl_y, root.pl_x};
 	map_check(&root, ffsize, ffbegin);
 	start_img(&root);
-	mlx_loop_hook(root.mlx, &handle_no_event, &root);
 	mlx_hook(root.mlx_win, 2, 1L << 0, &handle_keypress, &root);
 	mlx_hook(root.mlx_win, 17, 0, close_window, &root);
 	mlx_loop(root.mlx);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy.c                                          :+:      :+:    :+:   */
+/*   destroy_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 19:08:20 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/02 14:40:50 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/19 17:45:33 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ void	free_main_array(t_root *root)
 
 void	free_bonus_array(t_root *root)
 {
-	free(root->texture);
-	free(root->enemy.id);
+	if (root->texture != NULL)
+	{
+		free(root->texture);
+		free(root->enemy.id);
+	}
 }
