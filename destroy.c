@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 19:08:20 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/03/28 21:42:17 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/21 19:01:01 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ int	close_window(t_root *root)
 	int	size;
 
 	size = root->lines - 1;
-	mlx_destroy_window(root->mlx, root->mlx_win);
-	mlx_destroy_display(root->mlx);
+	if (root->mlx)
+		mlx_destroy_window(root->mlx, root->mlx_win);
+	if (root->mlx_win)
+		mlx_destroy_display(root->mlx);
 	if (root->map_array)
 	{
 		while (size >= 0)
@@ -32,4 +34,48 @@ int	close_window(t_root *root)
 	free(root->mlx);
 	exit(0);
 	return (0);
+}
+
+int	sqr_len(char *word)
+{
+	int	i;
+
+	i = 0;
+	if (!word)
+		return (0);
+	while (word[i] && word[i] != '\n')
+	{
+		i++;
+	}
+	return (i);
+}
+
+void	check_square(t_root *root)
+{
+	root->i = root->lines - 1;
+	root->sqr_size = 0;
+	root->sqr_flag = 0;
+	root->fd = acess_file(root);
+	root->str = get_next_line(root->fd);
+	root->sqr_size = sqr_len(root->str);
+	free(root->str);
+	if (root->sqr_size == 0)
+		root->sqr_flag = 1;
+	else
+	{
+		while (root->i > 0)
+		{
+			root->str = get_next_line(root->fd);
+			if ((sqr_len(root->str) != root->sqr_size && root->str) || sqr_len(root->str) == 0)
+				root->sqr_flag = 1;
+			free(root->str);
+			root->i--;
+		}
+	}
+	if (root->sqr_flag == 1)
+	{	
+		ft_putstr("Error\nMap is not square!\n");
+		free(root->str);
+		close_window(root);
+	}
 }

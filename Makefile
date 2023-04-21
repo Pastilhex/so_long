@@ -16,12 +16,14 @@ CFLAGS = -L ./minilibx-linux -Wall -Werror -Wextra -g -lmlx -lXext -lX11 -lm -lb
 RM = rm -f
 
 all:
+	$(MAKE) -C ./minilibx-linux
 	$(CC) $(SRC) $(GNL) $(CFLAGS) -o $(NAME)
 
 bonus:
 	$(CC) $(SRC_BONUS) $(GNL) $(CFLAGS) -o $(NAME_BONUS)
 
 clean:
+	$(MAKE) clean -C ./minilibx-linux 
 	$(RM) $(NAME)
 
 fclean: clean

@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:15:36 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/19 14:42:52 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/21 14:44:05 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	main(int argc, char **argv)
 	root.map_path = argv[argc - 1];
 	check_input(root.map_path, &root);
 	map_count(&root);
+	check_square(&root);
 	start_window(&root);
 	settings(&root);
 	build_array(&root);

@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 14:10:03 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/06 16:37:50 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/19 20:00:32 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	fill(t_point size, t_point cur, char to_fill, t_root *root)
 
 void	flood_fill(t_point ffsize, t_point ffbegin, t_root *root)
 {
+	root->c_exit = 0;
+	root->c_player = 0;
 	fill(ffsize, ffbegin, root->map_check[ffbegin.x][ffbegin.y], root);
 }
 

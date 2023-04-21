@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 22:09:52 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/01 16:44:52 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/21 17:31:23 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ typedef struct s_root
 	int		columns;
 	int		fd;
 	int		size;
+	int		sqr_size;
+	int		sqr_flag;
 	char	*str;
 	char	**map_array;
 	char	**map_check;
@@ -100,47 +102,34 @@ typedef struct s_root
 	t_point	point;
 }	t_root;
 
-//main
-
-//events
 int		close_window(t_root *root);
 int		mouse_event(int keycode, t_root *root);
 int		handle_keypress(int keysym, t_root *root);
 int		handle_no_event(void *root);
 void	check_input(char *str, t_root *root);
-
-//map_check
 void	map_fail(t_root *root, int i);
 void	map_validate(t_root *root);
 void	map_counter(t_root *root);
 void	map_check(t_root *root, t_point ffsize, t_point ffbegin);
-
-//map_gen
 void	map_count(t_root *root);
 void	build_array(t_root *root);
 void	build_copy(t_root *root);
 void	search_player(t_root *root);
 char	*gen_walls(t_root *root);
 char	*get_next_line(int fd);
-
-//move_player
 void	gen_img(int x, int y, t_root *root);
 void	move_player(int x, int y, t_root *root);
-
-//setup
 int		ft_putchar(char c);
 int		ft_putnbr(int n);
 void	ft_putstr(char *s);
 void	settings(t_root *root);
 void	start_img(t_root *root);
-
-//map_utils
 void	flood_fill(t_point size, t_point begin, t_root *root);
 void	fill(t_point size, t_point cur, char to_fill, t_root *root);
 void	collect_count(t_root *root);
 void	search_exit(t_root *root);
 int		acess_file(t_root *root);
-
-//destroy
+void	check_square(t_root *root);
+int		sqr_len(char *word);
 
 #endif

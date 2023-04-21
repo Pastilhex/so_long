@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_gen.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:25:46 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/29 22:05:59 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/21 15:43:09 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 void	map_count(t_root *root)
 {
+	root->mlx = NULL;
+	root->mlx_win = NULL;
+	root->map_array = NULL;
+	root->map_check = NULL;
 	root->c_collectable = 0;
 	root->c_player = 0;
 	root->c_exit = 0;

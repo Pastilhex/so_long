@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 21:11:23 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/19 18:49:33 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/19 20:01:05 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,6 @@ void	map_counter(t_root *root)
 		map_fail(root, 5);
 	else if (root->c_player < 1)
 		map_fail(root, 4);
-	root->c_exit = 0;
-	root->c_player = 0;
 }
 
 void	map_check(t_root *root, t_point ffsize, t_point ffbegin)

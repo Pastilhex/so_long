@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 22:09:52 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/19 18:57:26 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/21 17:32:30 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,8 @@ typedef struct s_root
 	int		columns;
 	int		fd;
 	int		size;
+	int		sqr_size;
+	int		sqr_flag;
 	char	*str;
 	char	**map_array;
 	char	**map_check;
@@ -136,69 +138,50 @@ typedef struct s_root
 	t_enemy	enemy;
 }	t_root;
 
-//main
 void	start_window(t_root	*root);
-
-//destroy_bonus
 int		close_window(t_root *root);
 void	free_main_array(t_root *root);
 void	free_bonus_array(t_root *root);
-
-//enemy_bonus
 void	enemy(int id, int x, int y, t_root *root);
 void	enemy_check_move(int id, int x, t_root *m);
-
-//enemy_utils_bonus
 void	enemy_images(t_root *root);
 int		enemy_rand(void);
 void	search_enemy_parameters(int n, t_root *root);
 void	search_enemy(t_root *root);
 void	print_moves(t_root *root);
-
-//events_bonus
 int		enemy_move(int id, t_root *m);
 int		handle_keypress(int keysym, t_root *root);
 int		handle_no_event(t_root *root);
 void	check_input(char *str, t_root *root);
-
-//ft_itoa_bonus
 char	*str(char *newvalue, long int n, int count);
 char	*ft_itoa_bonus(int n);
 int		counter(long int n);
-
-//map_check_bonus
 void	map_validate(t_root *root);
 void	map_fail(t_root *root, int i);
 void	map_counter(t_root *root);
 void	map_check(t_root *root, t_point ffsize, t_point ffbegin);
-
-//map_gen_bonus
 void	map_count(t_root *root);
 void	build_array(t_root *root);
 void	build_copy(t_root *root);
 void	search_player(t_root *root);
 char	*gen_walls(t_root *root);
 char	*get_next_line(int fd);
-
-//map_utils_bonus
 void	fill(t_point size, t_point cur, char to_fill, t_root *root);
 void	flood_fill(t_point size, t_point begin, t_root *root);
 void	collect_count(t_root *root);
 void	search_exit(t_root *root);
 int		acess_file(t_root *root);
-
-//move_player_bonus
 void	gen_img(int x, int y, t_root *root);
 void	first_move(char next_tile, int x, int y, t_root *root);
 void	second_move(int x, int y, t_root *root);
 void	third_move(char next_tile, int x, int y, t_root *root);
 void	move_player(int x, int y, t_root *root);
-
-//setup
 void	settings(t_root *root);
 void	start_img(t_root *root);
 int		ft_putchar(char c);
 int		ft_putnbr(int n);
 void	ft_putstr(char *s);
+void	check_square(t_root *root);
+int		sqr_len(char *word);
 
 #endif
