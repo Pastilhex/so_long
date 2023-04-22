@@ -6,7 +6,7 @@
 /*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 16:25:42 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/21 22:22:43 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/22 14:52:22 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char	*buildlast(char *lastrest)
 		free (lastrest);
 		return (NULL);
 	}
-	while (lastrest[i] != '\n' && lastrest[i])
+	while ((lastrest[i] != '\r' || lastrest[i] != '\n') && lastrest[i])
 		i++;
 	last = ft_calloc((len(lastrest) + 1 - i), sizeof(char));
 	if (last)
@@ -102,18 +102,3 @@ char	*get_next_line(int fd)
 	estatica = buildlast(estatica);
 	return (line);
 }
-
-// int	main()
-// {
-// 	int fd;
-// 	char *str;
-// 	fd = open("file2.txt", O_RDONLY);
-// 	if (fd == -1)
-// 		write (1, "error on open", 14);
-
-// 	str = get_next_line(fd);
-// 	printf ("%s", str);
-
-// 	free (str);
-// }
-
