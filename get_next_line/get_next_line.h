@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 16:25:42 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/03/25 15:21:01 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/21 22:24:45 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 1 
 # endif
 # include	<unistd.h>
 # include	<stdio.h>
 # include	<string.h>
 # include	<fcntl.h>
 # include	<stdlib.h>
-# include       <wchar.h>
+# include	<wchar.h>
 
 int		len(char *word);
 char	*join(char *s1, char *s2);
 int		find(char *str, char c);
 char	*get_next_line(int fd);
-char	*ft_calloc(size_t nmemb, size_t size);
+void	*ft_calloc(size_t nmemb, size_t size);
 
 #endif

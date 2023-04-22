@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:23:18 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/19 14:42:43 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/21 21:08:10 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ void	check_input(char *str, t_root *root)
 	char	*ext;
 	int		i;
 
+	root->mlx = NULL;
+	root->mlx_win = NULL;
+	root->map_array = NULL;
+	root->map_check = NULL;
 	i = 3;
 	ext = ".ber";
 	size = len(str);
