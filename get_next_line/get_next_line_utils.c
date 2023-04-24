@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/04 16:25:42 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/21 22:04:58 by ialves-m         ###   ########.fr       */
+/*   Created: 2023/04/23 22:01:59 by ialves-m          #+#    #+#             */
+/*   Updated: 2023/04/23 22:02:00 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	len(char *word)
 	int	i;
 
 	i = 0;
+	if (!word)
+		return (0);
 	while (word[i])
 		i++;
 	return (i);

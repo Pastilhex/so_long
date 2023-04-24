@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_gen.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/12 16:25:46 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/22 06:04:44 by ialves-m         ###   ########.fr       */
+/*   Created: 2023/04/23 22:01:24 by ialves-m          #+#    #+#             */
+/*   Updated: 2023/04/24 11:50:52 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,21 @@
 
 void	map_count(t_root *root)
 {
-	root->c_collectable = 0;
-	root->c_player = 0;
-	root->c_exit = 0;
-	root->c_other = 0;
-	root->lines = 0;
-	root->columns = 0;
-	root->tile.moves = 0;
-	root->i = 1;
+	start_input(root);
 	root->fd = acess_file(root);
-	while (root->i)
+	root->str = get_next_line(root->fd);
+	if (!root->str)
+	{
+		ft_putstr("Error\nMap is not square!\n");
+		close_window(root);
+		free (root->str);
+	}
+	free (root->str);
+	while (root->str)
 	{
 		root->str = get_next_line(root->fd);
 		if (root->str)
 			root->columns = len(root->str);
-		else
-			root->i = 0;
 		root->lines++;
 		free (root->str);
 	}
@@ -74,7 +73,7 @@ void	build_copy(t_root *root)
 	if (root->map_check)
 	{
 		root->fd = acess_file(root);
-		while (root->size > 0)
+		while (root->size-- > 0)
 		{
 			root->str = get_next_line(root->fd);
 			root->map_check[root->i] = (char *)malloc
@@ -85,11 +84,11 @@ void	build_copy(t_root *root)
 					root->map_check[root->i][root->j] = root->str[root->j];
 				root->map_check[root->i++][root->j] = '\0';
 				root->j = -1;
-				root->size--;
 			}
 			free(root->str);
 		}
 	}
+	free_str(root);
 	close(root->fd);
 	search_player(root);
 }

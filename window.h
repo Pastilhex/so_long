@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 22:09:52 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/21 17:31:23 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/24 11:50:08 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,5 +131,7 @@ void	search_exit(t_root *root);
 int		acess_file(t_root *root);
 void	check_square(t_root *root);
 int		sqr_len(char *word);
+void	start_input(t_root *root);
+void	free_str(t_root *root);
 
 #endif
