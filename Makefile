@@ -7,7 +7,7 @@ CC = cc
 GNL = ./get_next_line/get_next_line.c \
 		./get_next_line/get_next_line_utils.c
 
-SRC	= ./*.c
+SRC	= $(wildcard fbonus/*.c)
 
 SRC_BONUS = $(wildcard fbonus/*.c)
 
@@ -32,9 +32,10 @@ fclean: clean
 re: fclean all
 
 show:
+	@printf "CC		: $(CC)\n"
 	@printf "NAME  		: $(NAME)\n"
 	@printf "NAME BONUS	: $(NAME_BONUS)\n"
-	@printf "CC		: $(CC)\n"
+	@printf "CLEAN		: $(RM)\n"
 	@printf "FLAGS		: $(CFLAGS)\n"
 	@printf "SRC		: $(SRC)\n"
 	@printf "SRC BONUS	: $(SRC_BONUS)\n"
