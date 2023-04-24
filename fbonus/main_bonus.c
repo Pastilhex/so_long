@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:15:36 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/21 15:23:38 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/24 12:10:27 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	start_window(t_root *root)
 {
-	root->texture = NULL;
 	root->mlx = mlx_init();
 	root->mlx_win = mlx_new_window
 		(root->mlx, (root->columns * 64), (root->lines * 64), "So Long");

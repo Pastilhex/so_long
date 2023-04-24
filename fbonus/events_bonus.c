@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:23:18 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/21 15:24:11 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/24 12:03:15 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,6 @@ int	handle_keypress(int keysym, t_root *root)
 	if (keysym == XK_Escape)
 		close_window(root);
 	return (0);
-}
-
-void	check_input(char *str, t_root *root)
-{
-	int		size;
-	char	*ext;
-	int		i;
-
-	root->texture = NULL;
-	i = 3;
-	ext = ".ber";
-	size = len(str);
-	while (i >= 0)
-	{
-		if (str[size - i - 1] != ext[3 - i])
-			map_fail(root, 8);
-		i--;
-	}
 }
 
 int	enemy_move(int id, t_root *m)

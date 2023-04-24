@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_gen_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:25:46 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/21 16:11:06 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/24 12:14:15 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,21 @@
 
 void	map_count(t_root *root)
 {
-	root->mlx = NULL;
-	root->mlx_win = NULL;
-	root->map_array = NULL;
-	root->map_check = NULL;
-	root->c_collectable = 0;
-	root->c_player = 0;
-	root->c_exit = 0;
-	root->c_other = 0;
-	root->lines = 0;
-	root->columns = 0;
-	root->tile.moves = 0;
-	root->i = 1;
+	start_input(root);
 	root->fd = acess_file(root);
-	while (root->i)
+	root->str = get_next_line(root->fd);
+	if (!root->str)
+	{
+		ft_putstr("Error\nMap is not square!\n");
+		close_window(root);
+		free (root->str);
+	}
+	free (root->str);
+	while (root->str)
 	{
 		root->str = get_next_line(root->fd);
 		if (root->str)
 			root->columns = len(root->str);
-		else
-			root->i = 0;
 		root->lines++;
 		free (root->str);
 	}
@@ -94,6 +89,7 @@ void	build_copy(t_root *root)
 			free(root->str);
 		}
 	}
+	free_str(root);
 	close(root->fd);
 	search_player(root);
 }

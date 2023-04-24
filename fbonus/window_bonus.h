@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 22:09:52 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/21 17:32:30 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/24 12:04:32 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,5 +183,8 @@ int		ft_putnbr(int n);
 void	ft_putstr(char *s);
 void	check_square(t_root *root);
 int		sqr_len(char *word);
+void	start_input(t_root *root);
+void	check_input(char *str, t_root *root);
+void	free_str(t_root *root);
 
 #endif

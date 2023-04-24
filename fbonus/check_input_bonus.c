@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_input.c                                      :+:      :+:    :+:   */
+/*   check_input_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ialves-m <ialves-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:37:27 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/24 11:59:14 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/24 12:10:32 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "window.h"
+#include "window_bonus.h"
 
 void	start_input(t_root *root)
 {
+	root->mlx = NULL;
+	root->mlx_win = NULL;
+	root->map_array = NULL;
+	root->map_check = NULL;
+	root->texture = NULL;
 	root->c_collectable = 0;
 	root->c_player = 0;
 	root->c_exit = 0;

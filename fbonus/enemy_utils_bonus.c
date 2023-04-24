@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enemy_utils_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 20:31:36 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/02 17:56:33 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/24 12:27:09 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	enemy_rand(void)
 	num = rand() % 30;
 	if (num >= 0 && num < 15)
 		return (-1);
-	else if (num >= 15 && num < 20)
+	else if (num >= 15 && num < 17)
 		return (0);
 	else
 		return (1);
@@ -97,10 +97,7 @@ void	print_moves(t_root *m)
 		(m->columns - 2) * 64, 0);
 	mlx_destroy_image(m->mlx, m->img);
 	mlx_string_put(m->mlx, m->mlx_win, 93, 30, 0x00FFFFFF, m->enemy.nmoves);
-	if (((m->columns) / 2) % 2 == 0)
-		m->enemy.middle = ((m->columns) / 2) * 64 - 32;
-	else
-		m->enemy.middle = ((m->columns) / 2) * 64;
+	m->enemy.middle = ((m->columns) / 2) * 64;
 	m->img = mlx_xpm_file_to_image(m->mlx, m->tile.score_board,
 			&m->img_width, &m->img_height);
 	mlx_put_image_to_window(m->mlx, m->mlx_win, m->img, m->enemy.middle, 0);
