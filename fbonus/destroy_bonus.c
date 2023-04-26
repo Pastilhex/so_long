@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destroy_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 19:08:20 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/24 12:19:27 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/26 17:49:22 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	close_window(t_root *root)
 {
-	if (root->collected == root->collected_sum)
+	if (root->collected == root->collected_sum && root->collected_sum != 0)
 		ft_putstr("CONGRATULATIONS! YOU WON!\n");
-	else
+	else if (root->collected_sum != 0)
 		ft_putstr("GAME OVER\n");
 	if (root->mlx)
 		mlx_destroy_window(root->mlx, root->mlx_win);

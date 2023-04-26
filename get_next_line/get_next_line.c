@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 22:01:47 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/23 22:01:49 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/26 17:50:02 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,20 +104,3 @@ char	*get_next_line(int fd)
 	estatica = buildlast(estatica);
 	return (line);
 }
-/* 
-int	main()
-{
-	int fd;
-	char *str;
-	fd = open("file2.txt", O_RDONLY);
-	if (fd == -1)
-		write (1, "error on open", 14);
-	str = get_next_line(fd);
-	printf ("%s", str);
-	str = get_next_line(fd);
-	printf("%s", str);
-	str = get_next_line(fd);
-	printf("%s", str);
-	free (str);
-}
- */

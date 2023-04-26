@@ -7,7 +7,7 @@ CC = cc
 GNL = ./get_next_line/get_next_line.c \
 		./get_next_line/get_next_line_utils.c
 
-SRC	= $(wildcard fbonus/*.c)
+SRC	= $(wildcard *.c)
 
 SRC_BONUS = $(wildcard fbonus/*.c)
 

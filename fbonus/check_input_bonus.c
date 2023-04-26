@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_input_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:37:27 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/24 12:10:32 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/26 18:02:33 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	start_input(t_root *root)
 	root->columns = 0;
 	root->tile.moves = 0;
 	root->i = 0;
+	root->collected = 0;
+	root->collected_sum = 0;
 }
 
 void	check_input(char *str, t_root *root)
