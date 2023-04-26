@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 14:10:03 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/24 11:59:32 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/26 14:19:25 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "window.h"
-#include <unistd.h>
 
 void	fill(t_point size, t_point cur, char to_fill, t_root *root)
 {

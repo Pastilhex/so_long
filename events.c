@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:23:18 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/24 11:59:24 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/26 14:18:06 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "window.h"
-
-int	mouse_event(int keycode, t_root *root)
-{
-	(void) root;
-	if (keycode == 1)
-		printf("MOUSE_LEFT_BUTTON\n");
-	return (0);
-}
 
 int	handle_keypress(int keysym, t_root *root)
 {
