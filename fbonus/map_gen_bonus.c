@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_gen_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:25:46 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/24 12:14:15 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/26 14:13:15 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	build_copy(t_root *root)
 	if (root->map_check)
 	{
 		root->fd = open(root->map_path, O_RDONLY);
-		while (root->size > 0)
+		while (root->size-- > 0)
 		{
 			root->str = get_next_line(root->fd);
 			root->map_check[root->i] = (char *)malloc
@@ -84,7 +84,6 @@ void	build_copy(t_root *root)
 					root->map_check[root->i][root->j] = root->str[root->j];
 				root->map_check[root->i++][root->j] = '\0';
 				root->j = -1;
-				root->size--;
 			}
 			free(root->str);
 		}
